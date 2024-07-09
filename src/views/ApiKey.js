@@ -1,5 +1,5 @@
 export function ApiKey(props) {
-    const viewEl = document.createElement('div');
-    viewEl.textContent = 'Bienvenida al Api Key!';
-    return viewEl;
-  }
+  const viewEl = document.createElement("h1");
+  viewEl.textContent = "Bienvenida al Api Key!";
+  return viewEl;
+}
