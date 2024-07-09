@@ -1,4 +1,5 @@
 let ROUTES = {}; // Stores routes of the SPA
+
 let ROOT;
 
 export const setRootEl = (el) => {
