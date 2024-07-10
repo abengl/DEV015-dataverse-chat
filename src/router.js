@@ -5,6 +5,7 @@ let ROOT;
 export const setRootEl = (el) => {
   ROOT = el; // Element where the views will be rendered
   //console.log(ROOT);
+};
 
 export const setRoutes = (routes) => {
   // optional Throw errors if routes isn't an object
