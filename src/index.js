@@ -26,6 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
   onURLChange();
 });
 
-window.addEventListener('popstate', () => {
-    onURLChange();
- });
+window.addEventListener("popstate", () => {
+  onURLChange();
+});

@@ -1,6 +1,6 @@
 import { navigateTo } from "../router.js";
 
-export function ErrorRutas(props) {
+export function ErrorRutas() {
   const viewEl = document.createElement("h1");
   viewEl.textContent = "¿Perdida en el espacio?";
 
