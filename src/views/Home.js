@@ -1,6 +1,6 @@
 import { navigateTo } from "../router.js";
 
-export function Home(props) {
+export function Home() {
   const viewEl = document.createElement("h1");
   viewEl.textContent = "Bienvenida al Home!";
 

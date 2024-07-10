@@ -1,10 +1,10 @@
 let ROUTES = {}; // Stores routes of the SPA
-let rootEl;
+
+let ROOT;
 
 export const setRootEl = (el) => {
-  rootEl = el; // Element where the views will be rendered
-  //console.log(rootEl);
-};
+  ROOT = el; // Element where the views will be rendered
+  //console.log(ROOT);
 
 export const setRoutes = (routes) => {
   // optional Throw errors if routes isn't an object
@@ -25,7 +25,7 @@ const queryStringToObject = (queryString) => {
 //props -> search params
 const renderView = (pathname, props = {}) => {
   // clear the root element
-  rootEl.innerHTML = "";
+  ROOT.innerHTML = "";
   // find the correct view in ROUTES for the pathname
   // in case not found render the error view
   const viewFunction = ROUTES[pathname];
@@ -34,13 +34,14 @@ const renderView = (pathname, props = {}) => {
 
   if (!viewFunction) {
     navigateTo("/errorRutas", props);
+    return;
   }
   // render the correct view passing the value of props
   // add the view element to the DOM root element
   const componentHTML = viewFunction(props);
   // componentHTML = Home();
   // componentHTML = <div>
-  rootEl.append(componentHTML);
+  ROOT.append(componentHTML);
 };
 
 export const navigateTo = (pathname, props = {}) => {
@@ -69,3 +70,16 @@ export const onURLChange = () => {
   //console.log(props);
   renderView(pathname, props);
 };
+
+export const __TEST__ = {
+  get ROOT() {
+    return ROOT;
+  },
+};
+export const __TEST2__ = {
+  get ROUTES() {
+    return ROUTES;
+  },
+};
+
+export const __TEST3__ = { queryStringToObject, renderView };
