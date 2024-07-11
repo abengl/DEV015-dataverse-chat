@@ -1,5 +1,5 @@
-import { setRootEl, setRoutes } from "../src/router.js";
-import { __TEST__, __TEST2__, __TEST3__ } from "../src/router.js";
+import { setRootEl, setRoutes, queryStringToObject, renderView } from "../src/router.js";
+import { __TEST__, __TEST2__ } from "../src/router.js";
 
 describe("setRootEl", () => {
   it("should set the root element", () => {
@@ -20,7 +20,6 @@ describe("setRoutes", () => {
 });
 
 describe("queryStringToObject", () => {
-  const { queryStringToObject } = __TEST3__;
   it("should convert a query string to an object", () => {
     const queryString = "?name=John&age=30";
     const result = queryStringToObject(queryString);
@@ -35,24 +34,34 @@ describe("queryStringToObject", () => {
 });
 
 describe("renderView", () => {
-  const { renderView } = __TEST3__;
   let ROOT;
 
   beforeEach(() => {
-    ROOT = document.getElementById("root");
-    ROOT.innerHTML = "";
-    setRootEl(ROOT);
+    document.body.innerHTML = '<main id="root"></main>';
+    ROOT = document.querySelector("#root");
   });
 
-  it("should render the view for the pathname", () => {
-    const rootElement = document.querySelector("#root");
+  it("should call the function for the pathname", () => {
     const view = jest.fn();
     const routes = {
       "/": view,
     };
-    setRootEl(rootElement);
+
+    setRootEl(ROOT);
     setRoutes(routes);
     renderView("/");
     expect(view).toHaveBeenCalled();
+  });
+
+  it("should call the function navigateTo", () => {
+    const navigateTo = jest.fn();
+    const routes = {
+      "/errorRutas": navigateTo
+    };
+
+    setRootEl(ROOT);
+    setRoutes(routes);
+    renderView("/admin");
+    expect(navigateTo).toHaveBeenCalled();
   });
 });
