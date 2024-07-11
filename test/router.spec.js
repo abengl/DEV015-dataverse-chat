@@ -53,15 +53,35 @@ describe("renderView", () => {
     expect(view).toHaveBeenCalled();
   });
 
-  it("should call the function navigateTo", () => {
-    const navigateTo = jest.fn();
+  it("should call the function navigateTo when routes undefined", () => {
+    const viewError = jest.fn();
     const routes = {
-      "/errorRutas": navigateTo
+      "/errorRutas": viewError
     };
 
     setRootEl(ROOT);
     setRoutes(routes);
     renderView("/admin");
-    expect(navigateTo).toHaveBeenCalled();
+    expect(viewError).toHaveBeenCalled();
+  });
+
+  it("should update the view element", () => {
+    const view = jest.fn(() => {
+      const el = document.createElement("div");
+      el.id = "home";
+      return el;
+    });
+    const routes = {
+      "/": view,
+    };
+
+    setRootEl(ROOT);
+    setRoutes(routes);
+    renderView("/");
+    expect(ROOT.querySelector("#home")).toBeTruthy();
   });
 });
+
+// describe("navigateTo", () => { 
+
+// });
