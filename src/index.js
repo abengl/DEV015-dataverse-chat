@@ -15,14 +15,10 @@ const routes = {
   "/apiKey": ApiKey,
 };
 
-// Sets the routes for the ROUTES global variable in router.js
 setRoutes(routes);
 
-// Handle initial URL load
 window.addEventListener("DOMContentLoaded", () => {
-  // set root element
   setRootEl(rootElement);
-  // invoke onURLChange
   onURLChange();
 });
 
