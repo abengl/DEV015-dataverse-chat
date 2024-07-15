@@ -18,7 +18,7 @@ export function Home() {
   return viewEl;
   */
 
-  const homeElement = document.createElement("div");
-  homeElement.append(Header());
-  return homeElement;
+  const rootElement = document.getElementById("root");
+  rootElement.insertAdjacentElement("beforebegin", Header());
+  return viewEl;
 }
