@@ -1,6 +1,8 @@
 import { navigateTo } from "../router.js";
+import { Header } from "../components/Header.js";
 
 export function Home() {
+  /*
   const viewEl = document.createElement("h1");
   viewEl.textContent = "Bienvenida al Home!";
 
@@ -13,6 +15,10 @@ export function Home() {
     e.preventDefault();
     navigateTo("/chatIndividual", { id: "javascript" });
   });
-
   return viewEl;
+  */
+
+  const homeElement = document.createElement("div");
+  homeElement.append(Header());
+  return homeElement;
 }
