@@ -1,0 +1,28 @@
+footer {
+  height: 130px;
+  width: 100%;
+  padding: 20px;
+  background-color: transparent;
+  border-top: 2px solid var(--clr-neutro-dark);
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container-footer {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  column-gap: 10px;
+}
+
+h4 {
+  color: var(--clr-primary-dark);
+}
+
+.text-footer {
+  color: var(--tx-color-dark);
+  text-align: center;
+}
