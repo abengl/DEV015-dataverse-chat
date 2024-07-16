@@ -1,0 +1,43 @@
+@import '../views/home.css';
+@import './views/apiKey.css';
+@import './views/chatGrupal.css';
+@import './views/chatIndividual.css';
+@import '../styles/variables.css';
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 0px;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  h1 {
+    font-size: var(--fs-large);
+  }
+
+  .introduction {
+    width: 100%;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 10px;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+  }
+}
