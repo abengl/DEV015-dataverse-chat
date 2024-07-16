@@ -2,13 +2,22 @@
 import { data } from "../data/dataset.js";
 import { Header } from "../components/Header.js";
 import { Footer } from "../components/Footer.js";
-import { Cards } from "../components/Cards.js";
-import { filterData, sortData } from "../lib/dataFunctions.js";
+import { cards, cardsRanking } from "../components/Cards.js";
+import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 
 export function Home() {
+  /* Definimos los elementos del DOM en variables*/
   const rootElement = document.getElementById("root");
+
+  /* Insertamos los componentes header y footer en nuestra vista */
   rootElement.insertAdjacentElement("beforebegin", Header());
   rootElement.insertAdjacentElement("afterend", Footer());
+
+  /* Implementamos las funciones para los filtros de home */
+  function displayCards(data) {
+    rootElement.innerHTML = "";
+    rootElement.appendChild(cards(data));
+  }
 
   function resetSelectIndex(...selectElements) {
     selectElements.forEach((selectElement) => {
@@ -30,69 +39,73 @@ export function Home() {
     if (orderSelect.value) {
       filteredData = sortData(filteredData, "name", orderSelect.value);
     }
-
-    rootElement.innerHTML = "";
-    rootElement.appendChild(Cards(filteredData));
+    displayCards(filteredData);
   }
 
   function handleOrder(data, orderSelect) {
     let orderedData = data;
     orderedData = sortData(orderedData, "name", orderSelect.value);
-    rootElement.innerHTML = "";
-    rootElement.appendChild(Cards(orderedData));
+    displayCards(orderedData);
   }
 
-  const filterSelectType = document.querySelector("#type-select");
-  const filterSelectApplication = document.querySelector(
-    "#applicationField-select"
-  );
-  const orderSelect = document.querySelector("#order-select");
-  const clearButton = document.querySelector('[data-testid="button-clear"]');
-  const metricsButton = document.querySelector(".metrics");
-
-  filterSelectType.addEventListener("change", () => {
-    applyFilterAndSort(filterSelectType, filterSelectApplication, orderSelect);
-  });
-
-  filterSelectApplication.addEventListener("change", () => {
-    applyFilterAndSort(filterSelectApplication, filterSelectType, orderSelect);
-  });
-
-  orderSelect.addEventListener("change", () => {
-    if (filterSelectType.value) {
-      applyFilterAndSort(
-        filterSelectType,
-        filterSelectApplication,
-        orderSelect
-      );
-    } else if (filterSelectApplication.value) {
-      applyFilterAndSort(
-        filterSelectApplication,
-        filterSelectType,
-        orderSelect
-      );
-    } else {
-      handleOrder(data, orderSelect);
-    }
-  });
-
-  clearButton.addEventListener("click", () => {
-    resetSelectIndex(filterSelectType, filterSelectApplication, orderSelect);
+  function renderMetrics(data, rootElement) {
     rootElement.innerHTML = "";
-    rootElement.appendChild(Cards(data));
-  });
-
-  metricsButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    // const metricsItems = computeStats(data);
-    rootElement.innerHTML = "";
-    // rootElement.appendChild(renderRanking(metricsItems));
+    const metricsItems = computeStats(data);
+    rootElement.appendChild(cardsRanking(metricsItems));
 
     const h3Elements = document.querySelectorAll(".title-overlay");
-    h3Elements[0].innerHTML = "Lenguaje De Programación Más Usado";
-    h3Elements[1].innerHTML = "Lenguaje De Programación Más Antiguo";
-    h3Elements[2].innerHTML = "Lenguaje De Programación Más Actual";
-  });
+    h3Elements[0].innerText = "Lenguaje De Programación Más Usado";
+    h3Elements[1].innerText = "Lenguaje De Programación Más Antiguo";
+    h3Elements[2].innerText = "Lenguaje De Programación Más Actual";
+  }
 
-  return Cards(data);
+  /* Usamos setTimeout para esperar a que el DOM se actualice y poder seleccionar los elementos del DOM */
+  setTimeout(() => {
+    const filterSelectType = document.querySelector("#type-select");
+    const filterSelectApplication = document.querySelector(
+      "#applicationField-select"
+    );
+    const orderSelect = document.querySelector("#order-select");
+    const clearButton = document.querySelector('[data-testid="button-clear"]');
+    const metricsButton = document.querySelector(".metrics");
+
+    /* Declaramos los eventos de escucha para los filtros */
+    filterSelectType.addEventListener("change", () => {
+      applyFilterAndSort(filterSelectType, filterSelectApplication, orderSelect);
+    });
+
+    filterSelectApplication.addEventListener("change", () => {
+      applyFilterAndSort(filterSelectApplication, filterSelectType, orderSelect);
+    });
+
+    orderSelect.addEventListener("change", () => {
+      if (filterSelectType.value) {
+        applyFilterAndSort(
+          filterSelectType,
+          filterSelectApplication,
+          orderSelect
+        );
+      } else if (filterSelectApplication.value) {
+        applyFilterAndSort(
+          filterSelectApplication,
+          filterSelectType,
+          orderSelect
+        );
+      } else {
+        handleOrder(data, orderSelect);
+      }
+    });
+
+    clearButton.addEventListener("click", () => {
+      resetSelectIndex(filterSelectType, filterSelectApplication, orderSelect);
+      displayCards(data);
+    });
+
+    metricsButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      renderMetrics(data, rootElement);
+    });
+  }, 0);
+
+  return cards(data);
 }
