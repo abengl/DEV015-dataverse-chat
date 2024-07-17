@@ -22,12 +22,17 @@
   h2 {
     display: none;
   }
+
   h1 {
     font-size: var(--fs-large);
   }
 
   .header__hero {
     width: 100%;
+  }
+
+  .header__hero__introduction {
+    display: none;
   }
 
   .header__select {
