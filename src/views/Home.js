@@ -67,7 +67,7 @@ export function Home() {
     );
     const orderSelect = document.querySelector("#order-select");
     const clearButton = document.querySelector('[data-testid="button-clear"]');
-    const metricsButton = document.querySelector(".metrics");
+    const metricsButton = document.querySelector(".header__btn__ranking");
 
     /* Declaramos los eventos de escucha para los filtros */
     filterSelectType.addEventListener("change", () => {

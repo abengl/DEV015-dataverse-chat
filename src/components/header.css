@@ -15,7 +15,7 @@ header {
   gap: 20px;
 }
 
-.hero-container {
+.header__hero {
   width: 70%;
   display: flex;
   row-gap: 15px;
@@ -30,14 +30,14 @@ h1 {
   font-weight: var(--fw-bold);
 }
 
-.introduction {
+.header__hero__introduction {
   width: 80%;
   font-size: var(--fs-normal);
   font-weight: var(--fw-normal);
 }
 
 /*--------------------------NAV------------------------------*/
-.select-container {
+.header__select {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -73,7 +73,7 @@ option {
   padding: 0px 10px;
 }
 
-button {
+.header__btn__clear, .header__btn__ranking {
   width: 180px;
   height: 45px;
   padding: 10px 20px;
@@ -91,7 +91,7 @@ button {
   cursor: pointer;
 }
 
-.metrics {
+.header__btn__ranking {
   background-color: var(--clr-accent-yellow);
   color: #371689;
   border: 1px solid var(--clr-accent-yellow);
