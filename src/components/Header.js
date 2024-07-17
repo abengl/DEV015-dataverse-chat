@@ -3,9 +3,9 @@ import { Nav } from "../components/Nav.js";
 export function Header() {
   const headerElement = document.createElement("header");
   headerElement.innerHTML = `
-    <div class="hero-container">
-      <h1>Explora y Conquista las Tendencias Tecnológicas</h1>
-      <p class="introduction">
+    <div class="header__hero">
+      <h1 class="header__hero__title">Explora y Conquista las Tendencias Tecnológicas</h1>
+      <p class="header__hero__introduction">
           Descubre y domina las últimas tendencias tecnológicas. Explora
           tecnologías por tipo de lenguaje o campo de aplicación, ordena
           resultados y accede al ranking de lenguajes más populares. Limpia
@@ -13,7 +13,7 @@ export function Header() {
       </p>
     </div>
 
-    <nav class="select-container">
+    <nav class="header__select">
       <label for="type-select"></label>
       <select name="type" id="type-select" data-testid="select-filter">
         <option value="" disabled selected>Filtrar por tipo</option>
@@ -41,9 +41,9 @@ export function Header() {
         <option value="desc">Descendente</option>
       </select>
 
-      <button data-testid="button-clear">Limpiar</button>
+      <button class="header__btn__clear" data-testid="button-clear">Limpiar</button>
 
-      <button class="metrics">
+      <button class="header__btn__ranking">
         Ranking<img
           src="assets/icons/ranking.svg"
           height="16"

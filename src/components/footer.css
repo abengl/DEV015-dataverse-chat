@@ -10,7 +10,7 @@ footer {
   justify-content: space-between;
 }
 
-.logo-container-footer {
+.footer__logo {
   height: 150px;
   display: flex;
   align-items: center;
@@ -18,11 +18,15 @@ footer {
   column-gap: 10px;
 }
 
+.footer__logo__image {
+  height: 1rem;
+}
+
 h4 {
   color: var(--clr-primary-dark);
 }
 
-.text-footer {
+.footer__text {
   color: var(--tx-color-dark);
   text-align: center;
 }
