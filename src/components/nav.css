@@ -5,6 +5,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background: var(--clr-gradient-basic);
+  padding: 20px;
 }
 
 .nav__logo {
@@ -26,6 +28,7 @@ h2 {
   font-size: var(--fs-large);
   font-weight: var(--fw-bold);
   display: inline;
+  color: var(--tx-color-light);
 }
 
 .nav__btn {
