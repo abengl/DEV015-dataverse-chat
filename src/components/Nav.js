@@ -1,5 +1,14 @@
+import { navigateTo } from "../router.js";
+
 export function Nav() {
-  const navElement = document.createElement("nav");
+  let navElement;
+  
+  if(document.querySelector("nav")) {
+    navElement = document.querySelector("nav");
+    return navElement;
+  }
+
+  navElement = document.createElement("nav");
   navElement.classList.add("nav");
   navElement.innerHTML = `
     <div class="nav__logo">
@@ -11,5 +20,18 @@ export function Nav() {
       <button class="nav__btn__api" id="btn__api">Api</button>
     </div>
   `;
+
+  navElement.querySelector(".nav__logo").addEventListener("click", () => {
+    navigateTo('/');
+  });
+
+  navElement.querySelector("#btn__panel").addEventListener("click", () => {
+    navigateTo('/chatGrupal');
+  });
+
+  navElement.querySelector("#btn__api").addEventListener("click", () => {
+    navigateTo('/apiKey');
+  });
+
   return navElement;
 }

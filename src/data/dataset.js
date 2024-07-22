@@ -9,7 +9,7 @@ export const data = [
     imageUrl: "./assets/images/image_14.jpeg",
     facts: {
       type: "Framework",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2013,
       creator: "Jordan Walke",
       percentageOfUsers: "40.58%",
@@ -31,7 +31,7 @@ export const data = [
     imageUrl: "./assets/images/image_17.jpeg",
     facts: {
       type: "Framework",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2010,
       creator: "Google",
       percentageOfUsers: "22.96%",
@@ -97,7 +97,7 @@ export const data = [
     imageUrl: "./assets/images/image_2.jpeg",
     facts: {
       type: "Markup",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 1991,
       creator: "Tim Berners-Lee y Hakon Wium Lie",
       percentageOfUsers: "52.97%",
@@ -185,7 +185,7 @@ export const data = [
     imageUrl: "./assets/images/image_6.jpeg",
     facts: {
       type: "Language",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2012,
       creator: "Microsoft",
       percentageOfUsers: "27.58%",
@@ -361,7 +361,7 @@ export const data = [
     imageUrl: "./assets/images/image_18.jpeg",
     facts: {
       type: "Framework",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2014,
       creator: "Evan You",
       percentageOfUsers: "18.82%",
@@ -470,7 +470,7 @@ export const data = [
     imageUrl: "./assets/images/image_25.jpeg",
     facts: {
       type: "Framework",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2006,
       creator: "John Resig",
       percentageOfUsers: "18.64%",
@@ -514,7 +514,7 @@ export const data = [
     imageUrl: "./assets/images/image_1.jpeg",
     facts: {
       type: "Language",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 1995,
       creator: "Brendan Eich",
       percentageOfUsers: "63.61%",

@@ -8,7 +8,7 @@ import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 export function Home() {
   /* Definimos los elementos del DOM en variables*/
   const rootElement = document.getElementById("root");
-
+  
   /* Insertamos los componentes header y footer en nuestra vista */
   rootElement.insertAdjacentElement("beforebegin", Header());
   rootElement.insertAdjacentElement("afterend", Footer());

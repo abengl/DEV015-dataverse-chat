@@ -1,7 +1,13 @@
 import { Nav } from "../components/Nav.js";
 
 export function Header() {
-  const headerElement = document.createElement("header");
+  let headerElement;
+  if (document.querySelector("header")) {
+    headerElement = document.querySelector("header");
+    return headerElement;
+  }
+
+  headerElement = document.createElement("header");
   headerElement.innerHTML = `
     <div class="header__hero">
       <h1 class="header__hero__title">Explora y Conquista las Tendencias Tecnológicas</h1>
@@ -13,7 +19,7 @@ export function Header() {
       </p>
     </div>
 
-    <nav class="header__select">
+    <div class="header__select">
       <label for="type-select"></label>
       <select name="type" id="type-select" data-testid="select-filter">
         <option value="" disabled selected>Filtrar por tipo</option>
@@ -51,7 +57,7 @@ export function Header() {
           alt="top icon"
         />
       </button>
-    </nav>
+    </div>
     `;
   headerElement.insertBefore(Nav(), headerElement.firstChild);
   return headerElement;

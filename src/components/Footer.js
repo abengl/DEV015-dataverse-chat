@@ -1,3 +1,5 @@
+import { navigateTo } from "../router.js";
+
 export function Footer() {
   const footerEl = document.createElement("footer");
   footerEl.innerHTML = `
@@ -11,5 +13,8 @@ export function Footer() {
   </div>
   <div class="footer__block"></div>
   `;
+  footerEl.querySelector(".footer__logo").addEventListener("click", () => {
+    navigateTo("/");
+  });
   return footerEl;
 }
