@@ -5,8 +5,9 @@
   --fw-normal: 400;
   --fw-bold: 700;
 
-  --fs-small: 0.65rem; /* 10.4px */
-  --fs-normal: 0.9rem; /* 14.4px */
+  --fs-extra-small: 0.75rem; /* 12px */
+  --fs-small: 0.875rem; /* 14px */
+  --fs-normal: 1rem; /* 16px */
   --fs-large: 1.25rem; /* 20px */
   --fs-extra-large: 2rem; /* 32px */
 
@@ -22,5 +23,9 @@
   --clr-accent-yellow: #fbcc2b;
   --clr-primary-dark: #5318eb;
   --clr-primary-light: #ab6ef9;
-  --gradient-basic: linear-gradient(90deg, #5318eb 0%, #ab6ef9 100%);
+  --clr-gradient-basic: linear-gradient(90deg, #5318eb 0%, #ab6ef9 100%);
+  --clr-gradient-label-blue: linear-gradient(90deg, #1243fd 0%, #721ecd 50%);
+  --clr-gradient-label-purple: linear-gradient(90deg, #8d49f7, #6b53ff, #8d49f7);
+  --clr-label-border: rgba(13, 14, 19, 0.08);
+  --clr-label-background: rgba(107, 83, 255, 0.04);
 }
