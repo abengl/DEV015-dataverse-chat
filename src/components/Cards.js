@@ -28,10 +28,10 @@ export const cards = (data) => {
           <div class="card__label">
             <span class="card__label__text" itemprop="additionalType">${objeto.facts.type}</span>
             <span class="card__label__text" itemprop="exampleOfWork">${objeto.facts.applicationField}</span>
-          </div>
-          <button class="card__button">
-            <img class="card__button__icon" src="../assets/icons/chat.svg" alt="chat icon" itemprop="image"/>
-          </button>
+            </div>
+            <button class="card__button">
+              <img class="card__button__icon" src="../assets/icons/chat.svg" alt="chat icon" itemprop="image"/>
+            </button>
         `;
     ulElement.appendChild(liElement);
   });

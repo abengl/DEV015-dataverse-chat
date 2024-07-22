@@ -46,7 +46,7 @@ ul {
   text-align: center;
   flex-direction: row;
   border-radius: 15px;
-  background: var(--gradient-basic);
+  background: var(--clr-gradient-basic);
   transition: height 0.5s;
 }
 
@@ -85,7 +85,7 @@ ul {
 }
 
 #label__difficulty {
-  background: var(--gradient-label);
+  background: var(--clr-gradient-label-blue);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -138,13 +138,17 @@ ul {
   flex-direction: row;
   align-items: center;
   text-align: center;
-  justify-content: space-between;
+  column-gap: 10px;
+  /*justify-content: space-between;*/
 }
 
 .card__label__text {
-  font-size: var(--fs-normal);
+  font-size: var(--fs-small);
+  padding: 5px 10px;
   border-radius: 5px;
-  color: var(--tx-color-medium);
+  border: 1px solid var(--clr-label-border);
+  color: var(--tx-color-dark);
+  background: var(--clr-label-background);
 }
 
 .card__button {
