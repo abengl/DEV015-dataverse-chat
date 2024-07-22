@@ -32,7 +32,7 @@ ul {
   transform: scale(1.05);
 }
 
-.overlay {
+.card__overlay {
   height: 0;
   width: 100%;
   padding: 0 10px;
@@ -50,13 +50,13 @@ ul {
   transition: height 0.5s;
 }
 
-.title-overlay {
+.card__overlay__title {
   font-size: var(--fs-extra-large);
   font-weight: var(--fw-bold);
   color: var(--tx-color-light);
 }
 
-.card:hover .overlay {
+.card:hover .card__overlay {
   height: 100%;
 }
 
@@ -161,12 +161,13 @@ ul {
   color: var(--tx-color-light);
   font-weight: var(--fw-bold);
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card__button:hover{
+  background-color: var(--clr-neutro-dark);
 }
 
 .card__button__icon{
   width: 70%;
-}
-
-.card__button:hover{
-  background: var(--clr-neutro-dark);
 }

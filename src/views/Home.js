@@ -53,7 +53,7 @@ export function Home() {
     const metricsItems = computeStats(data);
     rootElement.appendChild(cardsRanking(metricsItems));
 
-    const h3Elements = document.querySelectorAll(".title-overlay");
+    const h3Elements = document.querySelectorAll(".card__overlay__title");
     h3Elements[0].innerText = "Lenguaje De Programación Más Usado";
     h3Elements[1].innerText = "Lenguaje De Programación Más Antiguo";
     h3Elements[2].innerText = "Lenguaje De Programación Más Actual";
