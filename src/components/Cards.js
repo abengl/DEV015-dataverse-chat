@@ -1,3 +1,5 @@
+import { navigateTo } from "../router.js";
+
 export const cards = (data) => {
   const ulElement = document.createElement("ul");
 
@@ -33,6 +35,10 @@ export const cards = (data) => {
             </button>
           </div>
         `;
+    const buttonElement = liElement.querySelector(".card__button");
+    buttonElement.addEventListener("click", () => {
+      navigateTo("/chatIndividual", { id: objeto.id });
+    }) 
     ulElement.appendChild(liElement);
   });
   return ulElement;
