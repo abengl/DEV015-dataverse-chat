@@ -9,8 +9,9 @@ export const cards = (data) => {
     liElement.setAttribute("data-id", objeto.id);
 
     liElement.innerHTML = ` 
-          <div class="card-image">
-            <img class="image" src="${objeto.imageUrl}" alt="${objeto.name}" itemprop="image"/>
+          <div class="card__image">
+            <img class="card__image__background" src="${objeto.imageUrl}" alt="${objeto.name}" itemprop="image"/>
+            <span class="card__image__label" itemprop="educationalLevel"><h4 id="label__difficulty">${objeto.facts.difficultyLevel}</h4></span>
           </div>
           <div class="card-text">
             <div class="content-title">
@@ -24,16 +25,10 @@ export const cards = (data) => {
           </div>
           <div class="card-label">
               <div class="item-label type">
-                <img class="label-icon type" src="${objeto.extraInfo.iconTypeUrl}" alt="Type" itemprop="image"/>
-                <span class="label-text type" itemprop="additionalType">Tipo ${objeto.facts.type}</span>
+                <span class="label-text type" itemprop="additionalType">${objeto.facts.type}</span>
               </div>
               <div class="item-label application">
-                <img class="label-icon application" src="${objeto.extraInfo.iconApplicationUrl}" alt="Application" itemprop="image"/>
-                <span class="label-text field" itemprop="exampleOfWork">Aplicación ${objeto.facts.applicationField}</span>
-              </div>
-              <div class="item-label difficulty">
-                <img class="label-icon ${objeto.facts.difficultyLevel}" src="./assets/icons/fire.svg" alt="difficulty level" itemprop="image"/>
-                <span class="label-text difficulty" itemprop="educationalLevel">Dificultad ${objeto.facts.difficultyLevel}</span>
+                <span class="label-text field" itemprop="exampleOfWork">${objeto.facts.applicationField}</span>
               </div>
           </div>
         `;

@@ -23,4 +23,5 @@
   --clr-primary-dark: #5318eb;
   --clr-primary-light: #ab6ef9;
   --gradient-basic: linear-gradient(90deg, #5318eb 0%, #ab6ef9 100%);
+  --gradient-label: linear-gradient(90deg, #1243fd 0%, #721ecd 50%);
 }
