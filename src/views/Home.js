@@ -1,5 +1,5 @@
-//import { navigateTo } from "../router.js";
 import { data } from "../data/dataset.js";
+import { loadStylesheet, removeStylesheet } from "../lib/styleUtils.js";  
 import { Header } from "../components/Header.js";
 import { Footer } from "../components/Footer.js";
 import { cards, cardsRanking } from "../components/Cards.js";
@@ -8,7 +8,7 @@ import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 export function Home() {
   /* Definimos los elementos del DOM en variables*/
   const rootElement = document.getElementById("root");
-  
+
   /* Insertamos los componentes header y footer en nuestra vista */
   rootElement.insertAdjacentElement("beforebegin", Header());
   rootElement.insertAdjacentElement("afterend", Footer());
@@ -106,6 +106,9 @@ export function Home() {
       renderMetrics(data, rootElement);
     });
   }, 0);
+
+  loadStylesheet("./styles/home.css");
+  removeStylesheet(["./styles/home.css", "./styles/style.css"]);
 
   return cards(data);
 }
