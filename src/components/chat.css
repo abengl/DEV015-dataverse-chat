@@ -52,7 +52,7 @@
 
 .chat__details__status {
     font-size: var(--fs-extra-small);
-    color: rgb(21, 150, 21);
+    color: var(--clr-primary-dark);
     margin: 0;
     padding: 0;
     height: 30px;
@@ -94,6 +94,13 @@
     grid-template-columns: 70px 1fr;
     row-gap: 10px;
     overflow: hidden;
+}
+
+.chat__reply__text{
+    background-color: #6b53ff;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
 }
 
 .chat__input {

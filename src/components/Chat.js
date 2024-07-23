@@ -22,7 +22,7 @@ export const Chat = (props) => {
           </div>
           <div class="chat__reply">
             <img class="chat__message__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
-            <div class="chat__message__text">
+            <div class="chat__reply__text">
               ${itemData.description}
             </div>
           </div>
@@ -34,7 +34,7 @@ export const Chat = (props) => {
           </div>
           <div class="chat__reply">
             <img class="chat__message__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
-            <div class="chat__message__text">
+            <div class="chat__reply__text">
               ${itemData.description}
             </div>
           </div>
