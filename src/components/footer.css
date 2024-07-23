@@ -16,6 +16,7 @@ footer {
   align-items: center;
   justify-content: left;
   column-gap: 10px;
+  cursor: pointer;
 }
 
 .footer__logo__image {

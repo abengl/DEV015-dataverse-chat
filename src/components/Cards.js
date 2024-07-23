@@ -1,3 +1,5 @@
+import { navigateTo } from "../router.js";
+
 export const cards = (data) => {
   const ulElement = document.createElement("ul");
 
@@ -28,11 +30,15 @@ export const cards = (data) => {
           <div class="card__label">
             <span class="card__label__text" itemprop="additionalType">${objeto.facts.type}</span>
             <span class="card__label__text" itemprop="exampleOfWork">${objeto.facts.applicationField}</span>
-            </div>
             <button class="card__button">
               <img class="card__button__icon" src="../assets/icons/chat.svg" alt="chat icon" itemprop="image"/>
             </button>
+          </div>
         `;
+    const buttonElement = liElement.querySelector(".card__button");
+    buttonElement.addEventListener("click", () => {
+      navigateTo("/chatIndividual", { id: objeto.id });
+    }) 
     ulElement.appendChild(liElement);
   });
   return ulElement;
@@ -68,10 +74,10 @@ export const cardsRanking = (data) => {
         <div class="card__label">
           <span class="card__label__text" itemprop="additionalType">${objeto.facts.type}</span>
           <span class="card__label__text" itemprop="exampleOfWork">${objeto.facts.applicationField}</span>
+          <button class="card__button">
+            <img class="card__button__icon" src="../assets/icons/chat.svg" alt="chat icon" itemprop="image"/>
+          </button>
         </div>
-        <button class="card__button">
-          <img class="card__button__icon" src="../assets/icons/chat.svg" alt="chat icon" itemprop="image"/>
-        </button>
         <div class="card__overlay">
           <h3 class="card__overlay__title"></h3>
         </div>

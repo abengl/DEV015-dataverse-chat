@@ -1,0 +1,119 @@
+@import "variables.css";
+@import "../components/nav.css";
+
+
+main {
+  width: 100%;
+  max-height: 100vh;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  column-gap: 1.5rem;
+}
+
+.chat {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  background-color: var(--tx-color-light);
+  border-radius: 15px;
+  box-shadow: 0px 5px 20px 0px rgba(103, 110, 144, 0.15);
+}
+
+.data {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 100px auto auto;
+  row-gap: 10px;
+  background-color: white;
+  box-shadow: 0px 5px 20px 0px rgba(103, 110, 144, 0.15);
+  border-radius: 15px;
+  position: relative;
+}
+
+.data__image {
+  position: relative;
+}
+
+.data__image__background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+.data__image__label {
+  padding: 3px 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 25px;
+  text-align: center;
+  font-weight: 700;
+  background: var(--background-main, #f0eff4);
+}
+
+#label__difficulty {
+  background: var(--clr-gradient-label-blue);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.data__text {
+  padding: 0 30px;
+  line-height: var(--lh-normal);
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.data__text__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 5px;
+}
+
+#title__name {
+  font-weight: var(--fw-bold);
+}
+
+#title__logo {
+  height: 20px;
+}
+
+.data__text__description {
+  width: 100%;
+  color: var(--tx-color-medium);
+}
+
+.data__text__year,
+.data__text__creator {
+  color: var(--tx-color-medium);
+}
+
+.text__bold {
+  font-weight: 600;
+}
+
+.data__text__users {
+  display: none;
+}
+
+.data__label {
+  padding: 0 30px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  column-gap: 10px;
+}
+
+.data__label__text {
+  font-size: var(--fs-small);
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--clr-label-border);
+  color: var(--tx-color-dark);
+  background: var(--clr-label-background);
+}
