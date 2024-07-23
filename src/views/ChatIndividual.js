@@ -2,6 +2,7 @@ import { data } from "../data/dataset.js";
 import { loadStylesheet } from "../lib/styleUtils.js";
 import { navigateTo } from "../router.js";
 import { Nav } from "../components/Nav.js";
+import { Chat } from "../components/Chat.js";
 
 export function ChatIndividual(props) {
   if (document.querySelector("header")) {
@@ -16,12 +17,12 @@ export function ChatIndividual(props) {
   rootElement.insertAdjacentElement("beforebegin", Nav());
 
   // Chat component
-  const chatElement = document.createElement("div");
-  chatElement.classList.add("chat");
-  chatElement.innerHTML = `
-    <h1>Bienvenido al chat individual de ${props.id}!</h1>
-  `;
-  rootElement.appendChild(chatElement);
+  // const chatElement = document.createElement("div");
+  // chatElement.classList.add("chat");
+  // chatElement.innerHTML = `
+  //   <h1>Bienvenido al chat individual de ${props.id}!</h1>
+  // `;
+  rootElement.appendChild(Chat(props));
 
   // Info component
   const itemData = data.find((item) => item.id === props.id);

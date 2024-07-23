@@ -1,5 +1,6 @@
 @import "variables.css";
 @import "../components/nav.css";
+@import "../components/chat.css";
 
 
 main {
@@ -9,14 +10,6 @@ main {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   column-gap: 1.5rem;
-}
-
-.chat {
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  background-color: var(--tx-color-light);
-  border-radius: 15px;
-  box-shadow: 0px 5px 20px 0px rgba(103, 110, 144, 0.15);
 }
 
 .data {
