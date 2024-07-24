@@ -1,5 +1,5 @@
 import { data } from "../data/dataset.js";
-import { loadStylesheet } from "../lib/styleUtils.js";
+import { loadStylesheet, removeStylesheet } from "../lib/styleUtils.js";
 import { navigateTo } from "../router.js";
 import { Nav } from "../components/Nav.js";
 import { Chat } from "../components/Chat.js";
@@ -15,13 +15,6 @@ export function ChatIndividual(props) {
 
   const rootElement = document.getElementById("root");
   rootElement.insertAdjacentElement("beforebegin", Nav());
-
-  // Chat component
-  // const chatElement = document.createElement("div");
-  // chatElement.classList.add("chat");
-  // chatElement.innerHTML = `
-  //   <h1>Bienvenido al chat individual de ${props.id}!</h1>
-  // `;
   rootElement.appendChild(Chat(props));
 
   // Info component
@@ -60,8 +53,8 @@ export function ChatIndividual(props) {
   } else {
     navigateTo("/errorRutas");
   }
-
   loadStylesheet("./styles/chatIndividual.css");
+  removeStylesheet(["./styles/chatIndividual.css", "./styles/style.css"]);
 
   return dataElement;
 }

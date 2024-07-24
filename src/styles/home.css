@@ -1,18 +1,3 @@
 @import "../components/header.css";
 @import "../components/footer.css";
 @import "../components/cards.css";
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--ff-sans);
-  font-size: var(--fs-normal);
-  font-weight: var(--fw-normal);
-  line-height: var(--lh-normal);
-  width: 100%;
-  background-color: var(--clr-neutro-light);
-}
