@@ -1,4 +1,5 @@
 import { Nav } from "../components/Nav.js";
+import { loadStylesheet, removeStylesheet } from "../lib/styleUtils.js";
 
 export function ChatGrupal() {
   if (document.querySelector("header")) {
@@ -14,5 +15,9 @@ export function ChatGrupal() {
 
   const viewEl = document.createElement("h1");
   viewEl.textContent = "Bienvenida al Chat Grupal!";
+
+  loadStylesheet("./styles/chatGrupal.css");
+  removeStylesheet(["./styles/chatGrupal.css", "./styles/style.css"]);
+
   return viewEl;
 }

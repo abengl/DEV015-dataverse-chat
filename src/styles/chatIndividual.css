@@ -1,7 +1,5 @@
-@import "variables.css";
 @import "../components/nav.css";
 @import "../components/chat.css";
-
 
 main {
   width: 100%;
