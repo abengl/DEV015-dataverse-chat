@@ -9,9 +9,9 @@ export function ApiKey() {
     document.querySelector("footer").remove();
   }
 
-  const viewEl = document.createElement("section");
-  viewEl.classList.add("container");
-  viewEl.innerHTML = `
+  const sectionElement = document.createElement("section");
+  sectionElement.classList.add("container");
+  sectionElement.innerHTML = `
     <div class="container__logo">
       <img src="../assets/logos/logo-color.svg" class="container__logo__image" alt="Logo" />
       <h1 class="container__logo__title">TechGenius</h1>
@@ -33,5 +33,6 @@ export function ApiKey() {
 
   loadStylesheet("./styles/apiKey.css");
   removeStylesheet(["./styles/apiKey.css", "./styles/style.css"]);
-  return viewEl;
+  
+  return sectionElement;
 }
