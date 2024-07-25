@@ -16,6 +16,8 @@
   --lh-small: 1.4;
   --lh-normal: 1.5;
 
+  --box-shadow-button: 0px 5px 5px 0px rgba(103, 110, 144, 0.15);
+
   --tx-color-light: #fff;
   --tx-color-medium: #545465;
   --tx-color-dark: #2b2a35;
@@ -25,6 +27,7 @@
   --clr-accent-yellow: #fbcc2b;
   --clr-primary-dark: #5318eb;
   --clr-primary-light: #ab6ef9;
+  --clr-gradient-yellow:linear-gradient(90deg, #ff9e2c, #ffd02c);
   --clr-gradient-basic: linear-gradient(90deg, #5318eb 0%, #ab6ef9 100%);
   --clr-gradient-label-blue: linear-gradient(90deg, #1243fd 0%, #721ecd 50%);
   --clr-gradient-label-purple: linear-gradient(90deg, #8d49f7, #6b53ff, #8d49f7);
@@ -45,6 +48,10 @@ body {
   line-height: var(--lh-normal);
   width: 100%;
   background-color: var(--clr-neutro-light);
+}
+
+::placeholder {
+  font-family: var(--ff-sans);
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
