@@ -1,14 +1,13 @@
-import { loadStylesheet, removeStylesheet } from "../lib/styleUtils.js";
+import { setStyles } from "../lib/styleUtils.js";
+import { clearComponents } from "../lib/viewUtils.js";
+import { getApiKey, setApiKey } from "../lib/apiKey.js";
+import { navigateTo } from "../router.js";
 
 export function ApiKey() {
-  if (document.querySelector("header")) {
-    document.querySelector("header").remove();
-  }
+  //Removemos componentes innecesarios
+  clearComponents(["header", "footer", "nav"]);
 
-  if (document.querySelector("footer")) {
-    document.querySelector("footer").remove();
-  }
-
+  //Creamos la estructura de la vista
   const sectionElement = document.createElement("section");
   sectionElement.classList.add("container");
   sectionElement.innerHTML = `
