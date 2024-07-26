@@ -26,7 +26,7 @@ function loadStylesheet(href) {
  * This function removes all stylesheets from the document except those whose href are passed as arguments
  * @param {Array} preserveHrefs - the hrefs of the stylesheets to preserve
  */
-export function removeStylesheet(preserveHrefs) {
+function removeStylesheet(preserveHrefs) {
   if (!Array.isArray(preserveHrefs)) {
     console.error("preserveHrefs must be an array");
     return;
