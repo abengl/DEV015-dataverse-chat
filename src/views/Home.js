@@ -1,5 +1,5 @@
 import { data } from "../data/dataset.js";
-import { loadStylesheet, removeStylesheet } from "../lib/styleUtils.js";  
+import { setStyles } from "../lib/styleUtils.js";
 import { Header } from "../components/Header.js";
 import { Footer } from "../components/Footer.js";
 import { cards, cardsRanking } from "../components/Cards.js";
@@ -71,11 +71,19 @@ export function Home() {
 
     /* Declaramos los eventos de escucha para los filtros */
     filterSelectType.addEventListener("change", () => {
-      applyFilterAndSort(filterSelectType, filterSelectApplication, orderSelect);
+      applyFilterAndSort(
+        filterSelectType,
+        filterSelectApplication,
+        orderSelect
+      );
     });
 
     filterSelectApplication.addEventListener("change", () => {
-      applyFilterAndSort(filterSelectApplication, filterSelectType, orderSelect);
+      applyFilterAndSort(
+        filterSelectApplication,
+        filterSelectType,
+        orderSelect
+      );
     });
 
     orderSelect.addEventListener("change", () => {
@@ -107,8 +115,7 @@ export function Home() {
     });
   }, 0);
 
-  loadStylesheet("./styles/home.css");
-  removeStylesheet(["./styles/home.css", "./styles/style.css"]);
+  setStyles("home");
 
   return cards(data);
 }
