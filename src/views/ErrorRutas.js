@@ -1,14 +1,10 @@
+import { setStyles } from "../lib/styleUtils.js";
+import { clearComponents } from "../lib/viewUtils.js";
 import { navigateTo } from "../router.js";
 import { Nav } from "../components/Nav.js";
 
 export function ErrorRutas() {
-  if (document.querySelector("header")) {
-    document.querySelector("header").remove();
-  }
-
-  if (document.querySelector("footer")) {
-    document.querySelector("footer").remove();
-  }
+  clearComponents(["header", "footer"]);
 
   const rootElement = document.getElementById("root");
   rootElement.insertAdjacentElement("beforebegin", Nav());
@@ -24,6 +20,8 @@ export function ErrorRutas() {
   buttonEl.addEventListener("click", () => {
     navigateTo("/");
   });
+
+  //setStyles("errorRutas");
 
   return viewEl;
 }
