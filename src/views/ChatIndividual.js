@@ -1,17 +1,12 @@
 import { data } from "../data/dataset.js";
-import { loadStylesheet, removeStylesheet } from "../lib/styleUtils.js";
+import { setStyles } from "../lib/styleUtils.js";
+import { clearComponents } from "../lib/viewUtils.js";
 import { navigateTo } from "../router.js";
 import { Nav } from "../components/Nav.js";
 import { Chat } from "../components/Chat.js";
 
 export function ChatIndividual(props) {
-  if (document.querySelector("header")) {
-    document.querySelector("header").remove();
-  }
-
-  if (document.querySelector("footer")) {
-    document.querySelector("footer").remove();
-  }
+  clearComponents(["header", "footer"]);
 
   const rootElement = document.getElementById("root");
   rootElement.insertAdjacentElement("beforebegin", Nav());
@@ -53,8 +48,7 @@ export function ChatIndividual(props) {
   } else {
     navigateTo("/errorRutas");
   }
-  loadStylesheet("./styles/chatIndividual.css");
-  removeStylesheet(["./styles/chatIndividual.css", "./styles/style.css"]);
+  setStyles("chatIndividual");
 
   return dataElement;
 }
