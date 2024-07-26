@@ -39,9 +39,10 @@ export function ApiKey() {
     const inputMessage = document.createElement("span");
     inputMessage.classList.add("input__message");
     sectionElement.insertBefore(inputMessage, inputElement);
+    let APIKEY;
 
     // Obtener y enmascarar la API key guardada
-    const APIKEY = getApiKey();
+    APIKEY = getApiKey();
     if (APIKEY) {
       const maskedApiKey = `${APIKEY.slice(0, 3)}${"•".repeat(
         APIKEY.length - 6
@@ -51,7 +52,7 @@ export function ApiKey() {
 
     // Botón guardar
     buttonSave.addEventListener("click", () => {
-      const APIKEY = inputElement.value;
+      APIKEY = inputElement.value;
 
       if (APIKEY.length >= 10) {
         setApiKey(APIKEY);
