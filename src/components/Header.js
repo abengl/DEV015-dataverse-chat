@@ -1,15 +1,11 @@
-import { Nav } from "../components/Nav.js";
+import { Nav } from "./Nav.js";
 
-export function Header() {
-  let headerElement;
-  if (document.querySelector("header")) {
-    headerElement = document.querySelector("header");
-    return headerElement;
-  }
+export const Header = () => {
+  const headerElement = document.createElement("header");
+  headerElement.classList.add("header");
 
-  headerElement = document.createElement("header");
   headerElement.innerHTML = `
-    <div class="header__hero">
+      <div class="header__hero">
       <h1 class="header__hero__title">Explora y Conquista las Tendencias Tecnológicas</h1>
       <p class="header__hero__introduction">
           Descubre y domina las últimas tendencias tecnológicas. Explora
@@ -35,7 +31,7 @@ export function Header() {
         data-testid="select-filter-2"
       >
         <option value="" disabled selected>Filtrar por aplicación</option>
-        <option value="Front-End">Frontend</option>
+        <option value="Frontend">Frontend</option>
         <option value="Backend">Backend</option>
         <option value="Data">Data</option>
       </select>
@@ -59,6 +55,7 @@ export function Header() {
       </button>
     </div>
     `;
+  
   headerElement.insertBefore(Nav(), headerElement.firstChild);
   return headerElement;
-}
+};

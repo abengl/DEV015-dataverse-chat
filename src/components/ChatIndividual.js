@@ -1,9 +1,9 @@
 import { data } from "../data/dataset.js";
 
-export const Chat = (props) => {
+export const ChatIndividual = (props) => {
   const itemData = data.find((item) => item.id === props.id);
   const containerChat = document.createElement("div");
-  containerChat.classList.add("chat");
+  containerChat.classList.add("chatIndividual");
 
   containerChat.innerHTML = `
         <div class="chat__container">
@@ -51,4 +51,3 @@ export const Chat = (props) => {
     `;
   return containerChat;
 };
-

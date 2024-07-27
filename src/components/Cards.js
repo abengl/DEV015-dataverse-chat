@@ -1,6 +1,6 @@
 import { navigateTo } from "../router.js";
 
-export const cards = (data) => {
+export const Cards = (data) => {
   const ulElement = document.createElement("ul");
 
   data.forEach((objeto) => {
@@ -37,14 +37,15 @@ export const cards = (data) => {
         `;
     const buttonElement = liElement.querySelector(".card__button");
     buttonElement.addEventListener("click", () => {
-      navigateTo("/chatIndividual", { id: objeto.id });
-    }) 
+      navigateTo("/chat", { id: objeto.id });
+    });
+
     ulElement.appendChild(liElement);
   });
   return ulElement;
 };
 
-export const cardsRanking = (data) => {
+export const CardsRanking = (data) => {
   const ulElement = document.createElement("ul");
 
   data.forEach((objeto) => {
@@ -55,7 +56,7 @@ export const cardsRanking = (data) => {
     liElement.setAttribute("data-id", objeto.id);
 
     liElement.innerHTML = ` 
-        <div class="card__image">
+            <div class="card__image">
           <img class="card__image__background" src="${objeto.imageUrl}" alt="${objeto.name}" itemprop="image"/>
           <span class="card__image__label" itemprop="educationalLevel"><h4 id="label__difficulty">${objeto.facts.difficultyLevel}</h4></span>
         </div>
