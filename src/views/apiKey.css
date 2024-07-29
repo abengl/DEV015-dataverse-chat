@@ -77,7 +77,7 @@ button {
     color: var(--clr-primary-dark);
 }
 
-#containerForm__back {
+#button__back {
     width: 150px;
     background-color: var(--tx-color-light);
     border: 1px solid var(--clr-neutro-dark);

@@ -1,5 +1,5 @@
 import { navigateTo } from "../router.js";
-import { setApiKey } from "../lib/apiKey.js";
+import { setApiKey, getApiKey } from "../lib/apiKey.js";
 
 export function ApiKey() {
   const apiKeyView = document.createElement("div");
@@ -18,32 +18,61 @@ export function ApiKey() {
             <button id="button__clear">Borrar</button>
             <button id="button__save">Guardar</button>
         </div>
-        <button id="containerForm__back">Volver a Inicio</button>
+        <button id="button__back">Volver a Inicio</button>
         <div class="containerForm__link">
             <p class="containerForm__link__text">¿Aún no tienes tu ApiKey?</p>
             <a class="containerForm__link__open" href="https://openai.com/" target="_blank">Genera tu ApiKey</a>
         </div>
-    </div>
+      </div>
   `;
-  const getElementsAndEvents = () => {    
-    const apiKey = document.getElementById("apikey");
+  const getElementsAndEvents = () => {
+    const inputElement = document.getElementById("apikey");
     const buttonSave = document.getElementById("button__save");
-    const buttonBack = document.getElementById("containerForm__back");
+    const buttonBack = document.getElementById("button__back");
     const buttonClear = document.getElementById("button__clear");
+    const containerForm = document.querySelector(".containerForm");
+    const inputMessage = document.createElement("span");
+    inputMessage.classList.add("input__message");
+    containerForm.insertBefore(inputMessage, inputElement);
 
+    let APIKEY;
+
+    // Obtener y enmascarar la API key guardada
+    APIKEY = getApiKey();
+    if (APIKEY) {
+      const maskedApiKey = `${APIKEY.slice(0, 3)}${"•".repeat(
+        APIKEY.length - 6
+      )}${APIKEY.slice(-3)}`;
+      inputElement.value = maskedApiKey;
+    }
+
+    // Botón guardar
     buttonSave.addEventListener("click", () => {
-      const apiKeyValue = apiKey.value;
-      setApiKey(apiKeyValue);
+      APIKEY = inputElement.value;
+
+      if (APIKEY.length >= 10) {
+        setApiKey(APIKEY);
+        const maskedApiKey = `${APIKEY.slice(0, 3)}${"•".repeat(
+          APIKEY.length - 6
+        )}${APIKEY.slice(-3)}`;
+        inputElement.value = maskedApiKey;
+        inputMessage.textContent = "¡API key guardada con éxito!";
+      } else {
+        inputMessage.textContent = `La API key debe tener al menos 10 caracteres.`;
+      }
+    });
+
+    // Botón borrar
+    buttonClear.addEventListener("click", () => {
+      localStorage.removeItem("APIKEY");
+      inputElement.value = "";
+      inputMessage.textContent = "¡API key borrada con éxito!";
     });
 
     buttonBack.addEventListener("click", () => {
       navigateTo("/");
     });
+  };
 
-    buttonClear.addEventListener("click", () => {
-      apiKey.value = "";
-    });
-  }
-  
-  return {view: apiKeyView, getElementsAndEvents};
+  return { view: apiKeyView, getElementsAndEvents };
 }

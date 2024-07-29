@@ -1,3 +1,5 @@
+import { navigateTo } from "../router.js";
+
 export const Footer = () => {
   const footerElement = document.createElement("footer");
   footerElement.classList.add("footer");
@@ -12,5 +14,9 @@ export const Footer = () => {
     </div>
     <div class="footer__block"></div>
 `;
+  footerElement.querySelector(".footer__logo").addEventListener("click", () => {
+    navigateTo("/");
+  });
+  
   return footerElement;
 };

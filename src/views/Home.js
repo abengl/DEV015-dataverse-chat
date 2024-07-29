@@ -64,6 +64,15 @@ export function Home() {
     h3Elements[2].innerText = "Lenguaje De Programación Más Actual";
   }
 
+  /**
+   * getElementsAndEvents is a function that sets up the necessary events and behaviors
+   * for the elements within the component's view. This function is called after the view
+   * has been added to the DOM to ensure that all elements are available for manipulation.
+   *
+   * @function
+   * @returns {void} - This function does not return any value. Instead, it configures
+   *                    the events and behaviors of the elements within the component.
+   */
   const getElementsAndEvents = () => {
     const filterSelectType = document.querySelector("#type-select");
     const filterSelectApplication = document.querySelector(

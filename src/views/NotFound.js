@@ -1,10 +1,24 @@
+import { Nav } from "../components/Nav.js";
+import { navigateTo } from "../router.js";
+
 export function NotFound() {
-  const rootEl = document.createElement("div");
-  rootEl.classList.add("not-found");
-  rootEl.innerHTML = `
-    <h1 class="not-found__title">404</h1>
-    <p class="not-found__text">Página no encontrada</p>
+  const notFoundView = document.createElement("div");
+  notFoundView.classList.add("not__found");
+  notFoundView.appendChild(Nav());
+
+  const mainElement = document.createElement("main");
+  mainElement.classList.add("not__found__main");
+  notFoundView.appendChild(mainElement);
+
+  mainElement.innerHTML = `
+    <h1 class="not-found__title">"¿Perdida en el espacio?";</h1>
+    <button id="button__back">Ir a Home</button>
   `;
-  const getElementsAndEvents = () => {};
-  return { view: rootEl, getElementsAndEvents };
+  const getElementsAndEvents = () => {
+    const buttonBack = document.querySelector("#button__back");
+    buttonBack.addEventListener("click", () => {
+      navigateTo("/");
+    });
+  };
+  return { view: notFoundView, getElementsAndEvents };
 }
