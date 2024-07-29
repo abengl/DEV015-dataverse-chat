@@ -45,7 +45,7 @@ const renderView = (pathname, props) => {
 
   // find the correct (route) to render
   const viewRender = ROUTES[pathname]; // find the route key value (value is a function)
-  console.log("renderizar", viewRender);
+  //console.log("renderizar", viewRender);
 
   // call the view's render function with the prop and get the new html element
   if (viewRender) {
@@ -86,7 +86,18 @@ export const navigateTo = (pathname, props = {}) => {
 // onUrlChange function that will be called when the url changes (popstate event)
 export const onUrlChange = () => {
   const { pathname, search } = window.location;
-  console.log("cambio de url", pathname, search);
+  //console.log("cambio de url", pathname, search);
   const props = queryStringToObject(search);
   renderView(pathname, props);
+};
+
+export const __TEST__ = {
+  get ROOT() {
+    return ROOT;
+  },
+};
+export const __TEST2__ = {
+  get ROUTES() {
+    return ROUTES;
+  },
 };

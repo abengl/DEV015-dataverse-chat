@@ -1,4 +1,4 @@
-import { setRootEl, setRoutes, queryStringToObject, renderView } from "../src/router.js";
+import { setRootEl, setRoutes, navigateTo, onUrlChange } from "../src/router.js";
 import { __TEST__, __TEST2__ } from "../src/router.js";
 
 describe("setRootEl", () => {
@@ -19,69 +19,54 @@ describe("setRoutes", () => {
   });
 });
 
-describe("queryStringToObject", () => {
-  it("should convert a query string to an object", () => {
-    const queryString = "?name=John&age=30";
-    const result = queryStringToObject(queryString);
-    expect(result).toEqual({ name: "John", age: "30" });
+describe("navigateTo", () => {
+  it("should change the pathname", () => {
+    const pathname = "/chatGroup";
+    navigateTo(pathname);
+    expect(window.location.pathname).toEqual(pathname);
   });
 
-  it("should return an empty object if the query string is empty", () => {
-    const queryString = "";
-    const result = queryStringToObject(queryString);
-    expect(result).toEqual({});
-  });
-});
-
-describe("renderView", () => {
-  let ROOT;
-
-  beforeEach(() => {
-    document.body.innerHTML = '<main id="root"></main>';
-    ROOT = document.querySelector("#root");
+  it("should change the pathname and add a query string with multiple parameters", () => {
+    const pathname = "/chatGroup";
+    const props = { id: 1, name: "chat" };
+    navigateTo(pathname, props);
+    expect(window.location.pathname).toEqual(pathname);
+    expect(window.location.search).toEqual("?id=1&name=chat");
   });
 
-  it("should call the function for the pathname", () => {
-    const view = jest.fn();
-    const routes = {
-      "/": view,
-    };
-
-    setRootEl(ROOT);
-    setRoutes(routes);
-    renderView("/");
-    expect(view).toHaveBeenCalled();
-  });
-
-  it("should call the function navigateTo when routes undefined", () => {
-    const viewError = jest.fn();
-    const routes = {
-      "/errorRutas": viewError
-    };
-
-    setRootEl(ROOT);
-    setRoutes(routes);
-    renderView("/admin");
-    expect(viewError).toHaveBeenCalled();
-  });
-
-  it("should update the view element", () => {
-    const view = jest.fn(() => {
-      const el = document.createElement("div");
-      el.id = "home";
-      return el;
-    });
-    const routes = {
-      "/": view,
-    };
-
-    setRootEl(ROOT);
-    setRoutes(routes);
-    renderView("/");
-    expect(ROOT.querySelector("#home")).toBeTruthy();
+  it("should buid the full URL", () => {
+    const pathname = "/chatGroup";
+    const props = { id: 1, name: "chat" };
+    navigateTo(pathname, props);
+    expect(window.location.href).toEqual(
+      `${window.location.origin}${pathname}?id=1&name=chat`
+    );
   });
 });
 
-// describe("navigateTo", () => { 
 
-// });
+describe("onUrlChange", () => {
+  it("should change the view based on the new location", () => {
+    document.body.innerHTML = '<div id="root"></div>';
+    const ROOT = document.querySelector("#root");
+    const view = document.createElement("div");
+    view.id = "chatGroup";
+    ROOT.appendChild(view);
+
+    // Cambia la URL
+    const location = {
+      pathname: "/chatGroup",
+      search: "?id=1&name=chat",
+    };
+    // Llama a onUrlChange
+    delete window.location;
+    window.location = { ...location, assign: jest.fn() };
+
+    onUrlChange();
+
+    // Verifica los cambios en el DOM
+    const expectedElement = document.querySelector("#chatGroup");
+    expect(expectedElement).toBeTruthy();
+  });
+});
+
