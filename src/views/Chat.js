@@ -9,16 +9,18 @@ import { ChatIndividual } from "../components/ChatIndividual.js";
  * @returns {HTMLElement} - The HTML element representing the Chat view.
  */
 export function Chat(props) {
+  // Creamos la vista
   const chatView = document.createElement("div");
   chatView.classList.add("chat");
-  chatView.innerHTML = "";
 
+  // Añadimos los componentes a la vista
   chatView.appendChild(Nav());
   const mainElement = document.createElement("main");
   mainElement.classList.add("chat__main");
   chatView.appendChild(mainElement);
   mainElement.appendChild(ChatIndividual(props));
 
+  // Localizamos el item en el dataset
   const itemData = data.find((item) => item.id === props.id);
 
   if (!itemData) {
@@ -26,6 +28,7 @@ export function Chat(props) {
     return chatView;
   }
 
+  // Creamos la estructura de información adicional
   const dataElement = document.createElement("li");
   dataElement.classList.add("data");
   dataElement.setAttribute("itemscope", "");
