@@ -1,9 +1,16 @@
 import { navigateTo } from "../router.js";
 import { setApiKey, getApiKey } from "../lib/apiKey.js";
 
+/**
+ * ApiKey is a function component that creates and returns a view element.
+ * @returns {HTMLElement} - The HTML element representing the ApiKey view.
+ */
 export function ApiKey() {
+  //Creamos la vista
   const apiKeyView = document.createElement("div");
   apiKeyView.classList.add("apiKey");
+
+  //Desarrollamos la estructura de la vista
   apiKeyView.innerHTML = `
       <div class="containerForm">
         <div class="containerForm__logo">
@@ -25,6 +32,8 @@ export function ApiKey() {
         </div>
       </div>
   `;
+
+  //getElementsAndEvents is a function that sets up the necessary events and behaviors for the elements within the component's view
   const getElementsAndEvents = () => {
     const inputElement = document.getElementById("apikey");
     const buttonSave = document.getElementById("button__save");
