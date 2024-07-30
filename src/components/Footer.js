@@ -1,8 +1,15 @@
 import { navigateTo } from "../router.js";
 
+/**
+ * Footer function creates and returns a footer element.
+ * @returns {HTMLElement} - The HTML element representing the Footer.
+ */
 export const Footer = () => {
+  //Creamos el footer
   const footerElement = document.createElement("footer");
   footerElement.classList.add("footer");
+
+  //Definimos la estructura del footer
   footerElement.innerHTML = `
     <div class="footer__logo">
       <img class="footer__logo__image" src="assets/logos/logo-color.svg" alt="Dataverse" />
@@ -14,6 +21,7 @@ export const Footer = () => {
     </div>
     <div class="footer__block"></div>
 `;
+  //Añadimos el evento para redirigir al inicio
   footerElement.querySelector(".footer__logo").addEventListener("click", () => {
     navigateTo("/");
   });
