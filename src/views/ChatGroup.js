@@ -6,15 +6,17 @@ import { navigateTo } from "../router.js";
  * @returns {HTMLElement} - The HTML element representing the Home view.
  */
 export function ChatGroup() {
+  //Creamos la vista
   const viewGroup = document.createElement("div");
   viewGroup.classList.add("chatGroup");
-  viewGroup.innerHTML = "";
-  viewGroup.appendChild(Nav());
 
+  //Añadimos los componentes a la vista
+  viewGroup.appendChild(Nav());
   const mainElement = document.createElement("main");
   mainElement.classList.add("chatGroup__main");
   viewGroup.appendChild(mainElement);
 
+  //Establecemos la estructura de la vista
   mainElement.innerHTML = `
     <div class="chatGroup__container">
       <p class="chatGroup__container__description">Bienvenida al Chat Grupal! 
