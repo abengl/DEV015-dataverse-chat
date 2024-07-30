@@ -1,5 +1,10 @@
 import { navigateTo } from "../router.js";
 
+/**
+ * Cards is a function that creates and returns a list of cards.
+ * @param {Array} data - An array of objects with the data to be displayed in the cards.
+ * @returns ulElement - The HTML element representing the list of cards.
+ */
 export const Cards = (data) => {
   const ulElement = document.createElement("ul");
 
@@ -42,9 +47,15 @@ export const Cards = (data) => {
 
     ulElement.appendChild(liElement);
   });
+
   return ulElement;
 };
 
+/**
+ * CardsRanking is a function that creates and returns a list of cards for metrics.
+ * @param {Array} data - An array of objects with the data to be displayed in the cards.
+ * @returns ulElement - The HTML element representing the list of cards.
+ */
 export const CardsRanking = (data) => {
   const ulElement = document.createElement("ul");
 
@@ -85,5 +96,6 @@ export const CardsRanking = (data) => {
       `;
     ulElement.appendChild(liElement);
   });
+
   return ulElement;
 };
