@@ -9,14 +9,17 @@ import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
  * @returns {HTMLElement} - The HTML element representing the Home view.
  */
 export function Home() {
-  const rootEl = document.createElement("div");
-  rootEl.classList.add("home");
-  rootEl.innerHTML = "";
-  rootEl.appendChild(Header());
-  const mainElement = document.createElement("main");
-  rootEl.appendChild(mainElement);
-  rootEl.appendChild(Footer());
+  //Creamos la vista
+  const homeView = document.createElement("div");
+  homeView.classList.add("home");
 
+  //Añadimos los componentes a la vista
+  homeView.appendChild(Header());
+  const mainElement = document.createElement("main");
+  homeView.appendChild(mainElement);
+  homeView.appendChild(Footer());
+
+  //Funciones para mostrar las cartas, filtros, ordenar y ranking
   function displayCards(data) {
     mainElement.innerHTML = "";
     mainElement.appendChild(Cards(data));
@@ -53,10 +56,10 @@ export function Home() {
     displayCards(orderedData);
   }
 
-  function renderMetrics(data, rootElement) {
-    rootElement.innerHTML = "";
+  function renderMetrics(data, homeViewement) {
+    homeViewement.innerHTML = "";
     const metricsItems = computeStats(data);
-    rootElement.appendChild(CardsRanking(metricsItems));
+    homeViewement.appendChild(CardsRanking(metricsItems));
 
     const h3Elements = document.querySelectorAll(".card__overlay__title");
     h3Elements[0].innerText = "Lenguaje De Programación Más Usado";
@@ -128,5 +131,5 @@ export function Home() {
     });
   };
 
-  return { view: rootEl, getElementsAndEvents };
+  return { view: homeView, getElementsAndEvents };
 }
