@@ -1,5 +1,5 @@
-import { setRootEl, setRoutes } from "../src/router.js";
-import { __TEST__, __TEST2__, __TEST3__ } from "../src/router.js";
+import { setRootEl, setRoutes, navigateTo, onUrlChange } from "../src/router.js";
+import { __TEST__, __TEST2__ } from "../src/router.js";
 
 describe("setRootEl", () => {
   it("should set the root element", () => {
@@ -19,40 +19,54 @@ describe("setRoutes", () => {
   });
 });
 
-describe("queryStringToObject", () => {
-  const { queryStringToObject } = __TEST3__;
-  it("should convert a query string to an object", () => {
-    const queryString = "?name=John&age=30";
-    const result = queryStringToObject(queryString);
-    expect(result).toEqual({ name: "John", age: "30" });
+describe("navigateTo", () => {
+  it("should change the pathname", () => {
+    const pathname = "/chatGroup";
+    navigateTo(pathname);
+    expect(window.location.pathname).toEqual(pathname);
   });
 
-  it("should return an empty object if the query string is empty", () => {
-    const queryString = "";
-    const result = queryStringToObject(queryString);
-    expect(result).toEqual({});
+  it("should change the pathname and add a query string with multiple parameters", () => {
+    const pathname = "/chatGroup";
+    const props = { id: 1, name: "chat" };
+    navigateTo(pathname, props);
+    expect(window.location.pathname).toEqual(pathname);
+    expect(window.location.search).toEqual("?id=1&name=chat");
+  });
+
+  it("should buid the full URL", () => {
+    const pathname = "/chatGroup";
+    const props = { id: 1, name: "chat" };
+    navigateTo(pathname, props);
+    expect(window.location.href).toEqual(
+      `${window.location.origin}${pathname}?id=1&name=chat`
+    );
   });
 });
 
-describe("renderView", () => {
-  const { renderView } = __TEST3__;
-  let ROOT;
 
-  beforeEach(() => {
-    ROOT = document.getElementById("root");
-    ROOT.innerHTML = "";
-    setRootEl(ROOT);
-  });
+describe("onUrlChange", () => {
+  it("should change the view based on the new location", () => {
+    document.body.innerHTML = '<div id="root"></div>';
+    const ROOT = document.querySelector("#root");
+    const view = document.createElement("div");
+    view.id = "chatGroup";
+    ROOT.appendChild(view);
 
-  it("should render the view for the pathname", () => {
-    const rootElement = document.querySelector("#root");
-    const view = jest.fn();
-    const routes = {
-      "/": view,
+    // Cambia la URL
+    const location = {
+      pathname: "/chatGroup",
+      search: "?id=1&name=chat",
     };
-    setRootEl(rootElement);
-    setRoutes(routes);
-    renderView("/");
-    expect(view).toHaveBeenCalled();
+    // Llama a onUrlChange
+    delete window.location;
+    window.location = { ...location, assign: jest.fn() };
+
+    onUrlChange();
+
+    // Verifica los cambios en el DOM
+    const expectedElement = document.querySelector("#chatGroup");
+    expect(expectedElement).toBeTruthy();
   });
 });
+

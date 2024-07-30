@@ -1,74 +1,93 @@
-let ROUTES = {}; // Stores routes of the SPA
-
+let ROUTES = {};
 let ROOT;
 
+/**
+ * setRootEl sets the root element where the views will be rendered.
+ * @param {HTMLElement} el - The DOM element that will be used as the root for rendering views.
+ */
 export const setRootEl = (el) => {
-  ROOT = el; // Element where the views will be rendered
-  //console.log(ROOT);
+  ROOT = el;
 };
 
+/**
+ * setRoutes sets the routes that will be used in the SPA.
+ * @param {object} routes - The routes that will be used in the SPA.
+ */
 export const setRoutes = (routes) => {
-  // optional Throw errors if routes isn't an object
-  // optional Throw errors if routes doesn't define an /error route
-  ROUTES = routes; // Routes of the application
-  //console.log(ROUTES);
+  ROUTES = routes;
 };
 
+/**
+ * queryStringToObject converts an query string to Object.
+ * @param {string} queryString - The query string to convert, including the leading "?".
+ * @returns {object} - An object with key-value pairs from the query string.
+ */
 const queryStringToObject = (queryString) => {
-  // convert query string to URLSearchParams
-  const urlParams = new URLSearchParams(queryString);
-  //console.log("type: " + typeof urlParams);
-  //console.log("urlParams: " + urlParams);
-  // convert URLSearchParams to an object
+  // get the query string from the url
+  const params = new URLSearchParams(queryString);
+  // create an object from the query string
+  const paramsObject = Object.fromEntries(params);
   // return the object
-  return Object.fromEntries(urlParams);
+  return paramsObject;
 };
-//props -> search params
-const renderView = (pathname, props = {}) => {
-  // clear the root element
-  ROOT.innerHTML = "";
-  // find the correct view in ROUTES for the pathname
-  // in case not found render the error view
-  const viewFunction = ROUTES[pathname];
-  // viewFunction = ROUTES["/"];
-  // viewFunction = Home();
 
-  if (!viewFunction) {
-    navigateTo("/errorRutas", props);
+/**
+ * renderView renders the view associated with the given pathname inside the root element.
+ * @param {string} pathname - The path that determines which view to render.
+ * @param {object} props = {} - Parameters to pass to the view's render function.
+ */
+const renderView = (pathname, props) => {
+  if (!ROOT) {
     return;
   }
-  // render the correct view passing the value of props
-  // add the view element to the DOM root element
-  const componentHTML = viewFunction(props);
-  // componentHTML = Home();
-  // componentHTML = <div>
-  ROOT.append(componentHTML);
+  // clear the current html
+  ROOT.innerHTML = "";
+
+  // find the correct (route) to render
+  const viewRender = ROUTES[pathname]; // find the route key value (value is a function)
+  //console.log("renderizar", viewRender);
+
+  // call the view's render function with the prop and get the new html element
+  if (viewRender) {
+    const { view, getElementsAndEvents } = viewRender(props);
+    ROOT.appendChild(view);
+    getElementsAndEvents();
+  } else {
+    navigateTo("/404");
+  }
 };
 
+/**
+ * Navigates to a new route within the SPA.
+ * @param {string} pathname - The path to navigate to.
+ * @param {object} [props={}] - Additional parameters for the view.
+ */
 export const navigateTo = (pathname, props = {}) => {
-  // update window history with pushState
-  // render the view with the pathname and props
+  // Build the query string if there are parameters
   const queryString = Object.keys(props).length
     ? `?${new URLSearchParams(props)}`
     : "";
-  // console.log("Object.keys(props): " + Object.keys(props));
-  // console.log("Object.keys(props).length: " + Object.keys(props).length);
-  // console.log("new URLSearchParams(props): " + new URLSearchParams(props));
+  // Build the full URL
   const url = `${window.location.origin}${pathname}${queryString}`;
 
+  // Add a new state to the browser history
   window.history.pushState(props, "", url);
+
+  // Render the corresponding view
   renderView(pathname, props);
 };
 
-export const onURLChange = () => {
-  // parse the location for the pathname and search params
-  // convert the search params to an object
-  // render the view with the pathname and object
+/**
+ * onUrlChange handles URL changes by updating the view based on the new location.
+ * @param {object} location - The location object representing the current URL.
+ * @param {string} location.pathname - The path of the current URL.
+ * @param {string} location.search - The query string of the current URL.
+ */
+// onUrlChange function that will be called when the url changes (popstate event)
+export const onUrlChange = () => {
   const { pathname, search } = window.location;
-  //console.log(pathname);
-  //console.log(search);
+  //console.log("cambio de url", pathname, search);
   const props = queryStringToObject(search);
-  //console.log(props);
   renderView(pathname, props);
 };
 
@@ -82,5 +101,3 @@ export const __TEST2__ = {
     return ROUTES;
   },
 };
-
-export const __TEST3__ = { queryStringToObject, renderView };

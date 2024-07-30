@@ -9,11 +9,11 @@ export const data = [
     imageUrl: "./assets/images/image_14.jpeg",
     facts: {
       type: "Framework",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2013,
       creator: "Jordan Walke",
       percentageOfUsers: "40.58%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -31,11 +31,11 @@ export const data = [
     imageUrl: "./assets/images/image_17.jpeg",
     facts: {
       type: "Framework",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2010,
       creator: "Google",
       percentageOfUsers: "22.96%",
-      difficultyLevel: "Alta",
+      difficultyLevel: "Advanced",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -57,7 +57,7 @@ export const data = [
       yearOfCreation: 2009,
       creator: "Ryan Dahl",
       percentageOfUsers: "33.91%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -79,7 +79,7 @@ export const data = [
       yearOfCreation: 2000,
       creator: "Microsoft",
       percentageOfUsers: "26.7%",
-      difficultyLevel: "Alta",
+      difficultyLevel: "Advanced",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -97,11 +97,11 @@ export const data = [
     imageUrl: "./assets/images/image_2.jpeg",
     facts: {
       type: "Markup",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 1991,
       creator: "Tim Berners-Lee y Hakon Wium Lie",
       percentageOfUsers: "52.97%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/markup.svg",
@@ -123,7 +123,7 @@ export const data = [
       yearOfCreation: 1974,
       creator: "Donald D. Chamberlin y Raymond F. Boyce",
       percentageOfUsers: "48.66%",
-      difficultyLevel: "Alta",
+      difficultyLevel: "Advanced",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -145,7 +145,7 @@ export const data = [
       yearOfCreation: 1991,
       creator: "Guido van Rossum",
       percentageOfUsers: "48.07%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -167,7 +167,7 @@ export const data = [
       yearOfCreation: 1995,
       creator: "James Gosling",
       percentageOfUsers: "34.31%",
-      difficultyLevel: "Alta",
+      difficultyLevel: "Advanced",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -185,11 +185,11 @@ export const data = [
     imageUrl: "./assets/images/image_6.jpeg",
     facts: {
       type: "Language",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2012,
       creator: "Microsoft",
       percentageOfUsers: "27.58%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -211,7 +211,7 @@ export const data = [
       yearOfCreation: 1994,
       creator: "Rasmus Lerdorf",
       percentageOfUsers: "21.26%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -233,7 +233,7 @@ export const data = [
       yearOfCreation: 1983,
       creator: "Bjarne Stroustrup",
       percentageOfUsers: "20.41%",
-      difficultyLevel: "Alta",
+      difficultyLevel: "Advanced",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -255,7 +255,7 @@ export const data = [
       yearOfCreation: 2009,
       creator: "Robert Griesemer, Rob Pike, y Ken Thompson",
       percentageOfUsers: "18.21%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -277,7 +277,7 @@ export const data = [
       yearOfCreation: 2010,
       creator: "Graydon Hoare",
       percentageOfUsers: "15.11%",
-      difficultyLevel: "Alta",
+      difficultyLevel: "Advanced",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -299,7 +299,7 @@ export const data = [
       yearOfCreation: 2011,
       creator: "JetBrains",
       percentageOfUsers: "12.97%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -321,7 +321,7 @@ export const data = [
       yearOfCreation: 1995,
       creator: "Yukihiro Matsumoto",
       percentageOfUsers: "11.39%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/programming.svg",
@@ -343,7 +343,7 @@ export const data = [
       yearOfCreation: 2005,
       creator: "Adrian Holovaty y Simon Willison",
       percentageOfUsers: "15.9%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -361,11 +361,11 @@ export const data = [
     imageUrl: "./assets/images/image_18.jpeg",
     facts: {
       type: "Framework",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2014,
       creator: "Evan You",
       percentageOfUsers: "18.82%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -387,7 +387,7 @@ export const data = [
       yearOfCreation: 2002,
       creator: "Rod Johnson",
       percentageOfUsers: "13.35%",
-      difficultyLevel: "Alta",
+      difficultyLevel: "Advanced",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -408,7 +408,7 @@ export const data = [
       yearOfCreation: 2011,
       creator: "Taylor Otwell",
       percentageOfUsers: "10.57%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -430,7 +430,7 @@ export const data = [
       yearOfCreation: 2010,
       creator: "Armin Ronacher",
       percentageOfUsers: "10.24%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -452,7 +452,7 @@ export const data = [
       yearOfCreation: 2010,
       creator: "TJ Holowaychuk",
       percentageOfUsers: "20.37%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -470,11 +470,11 @@ export const data = [
     imageUrl: "./assets/images/image_25.jpeg",
     facts: {
       type: "Framework",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 2006,
       creator: "John Resig",
       percentageOfUsers: "18.64%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -496,7 +496,7 @@ export const data = [
       yearOfCreation: 2015,
       creator: "Google Brain Team",
       percentageOfUsers: "10.23%",
-      difficultyLevel: "Alta",
+      difficultyLevel: "Advanced",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",
@@ -514,11 +514,11 @@ export const data = [
     imageUrl: "./assets/images/image_1.jpeg",
     facts: {
       type: "Language",
-      applicationField: "Front-End",
+      applicationField: "Frontend",
       yearOfCreation: 1995,
       creator: "Brendan Eich",
       percentageOfUsers: "63.61%",
-      difficultyLevel: "Baja",
+      difficultyLevel: "Beginner",
     },
     extraInfo: {
       iconTypeUrl: "./assets/icons/framework.svg",

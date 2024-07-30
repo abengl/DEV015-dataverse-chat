@@ -1,0 +1,97 @@
+header {
+  background: var(--clr-gradient-basic);
+  box-shadow: 0px 10px 50px 10px rgba(95, 35, 237, 0.5);
+  color: var(--tx-color-light);
+  padding: 0 20px 30px;
+  margin-bottom: 50px;
+  width: 100%;
+  background-color: var(--clr-neutral-200);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header__hero {
+  width: 70%;
+  display: flex;
+  row-gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: var(--lh-small);
+}
+
+h1 {
+  font-size: var(--fs-extra-large);
+  font-weight: var(--fw-bold);
+}
+
+.header__hero__introduction {
+  width: 80%;
+  font-size: var(--fs-normal);
+  font-weight: var(--fw-normal);
+}
+
+/*--------------------------NAV------------------------------*/
+.header__select {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 0;
+}
+
+select {
+  width: 230px;
+  height: 45px;
+  padding: 10px;
+  font-size: var(--fs-normal);
+  font-family: var(--ff-sans);
+  font-weight: var(--fw-normal);
+  color: var(--tx-color-light);
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+}
+
+option {
+  color: var(--tx-color-dark);
+}
+
+#type-select,
+#applicationField-select {
+  padding: 0px 10px;
+}
+
+#order-select {
+  width: 180px;
+  padding: 0px 10px;
+}
+
+.header__btn__clear,
+.header__btn__ranking {
+  width: 180px;
+  height: 45px;
+  padding: 10px 20px;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-normal);
+  color: var(--clr-primary-dark);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  border: 1px solid white;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.header__btn__ranking {
+  background-color: var(--clr-accent-yellow);
+  color: #371689;
+  border: 1px solid var(--clr-accent-yellow);
+}
