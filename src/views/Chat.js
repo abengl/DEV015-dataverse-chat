@@ -1,28 +1,41 @@
 import { data } from "../data/dataset.js";
-import { setStyles } from "../lib/styleUtils.js";
-import { clearComponents } from "../lib/viewUtils.js";
-import { navigateTo } from "../router.js";
 import { Nav } from "../components/Nav.js";
-import { Chat } from "../components/Chat.js";
+import { navigateTo } from "../router.js";
+import { ChatIndividual } from "../components/ChatIndividual.js";
 
-export function ChatIndividual(props) {
-  clearComponents(["header", "footer"]);
+/**
+ * Chat is a function component that creates and returns a view element.
+ * @param {object} props - The properties of the view.
+ * @returns {HTMLElement} - The HTML element representing the Chat view.
+ */
+export function Chat(props) {
+  // Creamos la vista
+  const chatView = document.createElement("div");
+  chatView.classList.add("chat");
 
-  const rootElement = document.getElementById("root");
-  rootElement.insertAdjacentElement("beforebegin", Nav());
-  rootElement.appendChild(Chat(props));
+  // Añadimos los componentes a la vista
+  chatView.appendChild(Nav());
+  const mainElement = document.createElement("main");
+  mainElement.classList.add("chat__main");
+  chatView.appendChild(mainElement);
+  mainElement.appendChild(ChatIndividual(props));
 
-  // Info component
+  // Localizamos el item en el dataset
   const itemData = data.find((item) => item.id === props.id);
 
+  if (!itemData) {
+    navigateTo("/404");
+    return chatView;
+  }
+
+  // Creamos la estructura de información adicional
   const dataElement = document.createElement("li");
   dataElement.classList.add("data");
   dataElement.setAttribute("itemscope", "");
   dataElement.setAttribute("itemtype", "https://schema.org/CreativeWork");
   dataElement.setAttribute("data-id", itemData.id);
 
-  if (itemData) {
-    dataElement.innerHTML = ` 
+  dataElement.innerHTML = `
       <div class="data__image">
         <img class="data__image__background" src="${itemData.imageUrl}" alt="${itemData.name}" itemprop="image"/>
         <span class="data__image__label" itemprop="educationalLevel"><h4 id="label__difficulty">${itemData.facts.difficultyLevel}</h4></span>
@@ -44,11 +57,11 @@ export function ChatIndividual(props) {
         <span class="data__label__text" itemprop="exampleOfWork">${itemData.facts.applicationField}</span>
       </div>
     `;
-    rootElement.appendChild(dataElement);
-  } else {
-    navigateTo("/errorRutas");
-  }
-  setStyles("chatIndividual");
 
-  return dataElement;
+  mainElement.appendChild(dataElement);
+
+  //getElementsAndEvents is a function that sets up the necessary events and behaviors for the elements within the component's view
+  const getElementsAndEvents = () => {};
+
+  return { view: chatView, getElementsAndEvents };
 }

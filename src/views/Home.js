@@ -1,23 +1,31 @@
 import { data } from "../data/dataset.js";
-import { setStyles } from "../lib/styleUtils.js";
 import { Header } from "../components/Header.js";
+import { Cards, CardsRanking } from "../components/Cards.js";
 import { Footer } from "../components/Footer.js";
-import { cards, cardsRanking } from "../components/Cards.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
 
+/**
+ * Home is a function component that creates and returns a view element.
+ * @returns {HTMLElement} - The HTML element representing the Home view.
+ */
 export function Home() {
-  /* Definimos los elementos del DOM en variables*/
-  const rootElement = document.getElementById("root");
+  //Creamos la vista
+  const homeView = document.createElement("div");
+  homeView.classList.add("home");
 
-  /* Insertamos los componentes header y footer en nuestra vista */
-  rootElement.insertAdjacentElement("beforebegin", Header());
-  rootElement.insertAdjacentElement("afterend", Footer());
+  //Añadimos los componentes a la vista
+  homeView.appendChild(Header());
+  const mainElement = document.createElement("main");
+  homeView.appendChild(mainElement);
+  homeView.appendChild(Footer());
 
-  /* Implementamos las funciones para los filtros de home */
+  //Funciones para mostrar las cartas, filtros, ordenar y ranking
   function displayCards(data) {
-    rootElement.innerHTML = "";
-    rootElement.appendChild(cards(data));
+    mainElement.innerHTML = "";
+    mainElement.appendChild(Cards(data));
   }
+
+  displayCards(data);
 
   function resetSelectIndex(...selectElements) {
     selectElements.forEach((selectElement) => {
@@ -48,10 +56,10 @@ export function Home() {
     displayCards(orderedData);
   }
 
-  function renderMetrics(data, rootElement) {
-    rootElement.innerHTML = "";
+  function renderMetrics(data, homeViewement) {
+    homeViewement.innerHTML = "";
     const metricsItems = computeStats(data);
-    rootElement.appendChild(cardsRanking(metricsItems));
+    homeViewement.appendChild(CardsRanking(metricsItems));
 
     const h3Elements = document.querySelectorAll(".card__overlay__title");
     h3Elements[0].innerText = "Lenguaje De Programación Más Usado";
@@ -59,8 +67,16 @@ export function Home() {
     h3Elements[2].innerText = "Lenguaje De Programación Más Actual";
   }
 
-  /* Usamos setTimeout para esperar a que el DOM se actualice y poder seleccionar los elementos del DOM */
-  setTimeout(() => {
+  /**
+   * getElementsAndEvents is a function that sets up the necessary events and behaviors
+   * for the elements within the component's view. This function is called after the view
+   * has been added to the DOM to ensure that all elements are available for manipulation.
+   *
+   * @function
+   * @returns {void} - This function does not return any value. Instead, it configures
+   *                    the events and behaviors of the elements within the component.
+   */
+  const getElementsAndEvents = () => {
     const filterSelectType = document.querySelector("#type-select");
     const filterSelectApplication = document.querySelector(
       "#applicationField-select"
@@ -111,11 +127,9 @@ export function Home() {
 
     metricsButton.addEventListener("click", (event) => {
       event.preventDefault();
-      renderMetrics(data, rootElement);
+      renderMetrics(data, mainElement);
     });
-  }, 0);
+  };
 
-  setStyles("home");
-
-  return cards(data);
+  return { view: homeView, getElementsAndEvents };
 }

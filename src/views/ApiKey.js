@@ -1,44 +1,49 @@
-import { setStyles } from "../lib/styleUtils.js";
-import { clearComponents } from "../lib/viewUtils.js";
-import { getApiKey, setApiKey } from "../lib/apiKey.js";
 import { navigateTo } from "../router.js";
+import { setApiKey, getApiKey } from "../lib/apiKey.js";
 
+/**
+ * ApiKey is a function component that creates and returns a view element.
+ * @returns {HTMLElement} - The HTML element representing the ApiKey view.
+ */
 export function ApiKey() {
-  //Removemos componentes innecesarios
-  clearComponents(["header", "footer", "nav"]);
+  //Creamos la vista
+  const apiKeyView = document.createElement("div");
+  apiKeyView.classList.add("apiKey");
 
-  //Creamos la estructura de la vista
-  const sectionElement = document.createElement("section");
-  sectionElement.classList.add("container");
-  sectionElement.innerHTML = `
-    <div class="container__logo">
-      <img src="../assets/logos/logo-color.svg" class="container__logo__image" alt="Logo" />
-      <h1 class="container__logo__title">TechGenius</h1>
-    </div>
-    <p class="container__description">Conversa con la tecnología de programación preferida. 
-    Ingresa tu API KEY y descubre mucho más sobre la tecnología.</p>
-    <label for="apikey" class="container__label">API KEY</label>
-    <input type="text" class="container__input" id="apikey" placeholder="Ingresa tu API KEY" required/>
-    <div class="container__button">
-      <button id="button__clear">Borrar</button>
-      <button id="button__save">Guardar</button>
-    </div>
-    <button id="button__back">Volver a Inicio</button>
-    <div class="container__link">
-      <p class="container__link__text">¿Aún no tienes tu ApiKey?</p>
-      <a class="container__link__open" href="https://openai.com/" target="_blank">Genera tu ApiKey</a>
-    </div>
-    `;
+  //Desarrollamos la estructura de la vista
+  apiKeyView.innerHTML = `
+      <div class="containerForm">
+        <div class="containerForm__logo">
+            <img src="../assets/logos/logo-color.svg" class="containerForm__logo__image" alt="Logo" />
+            <h1 class="containerForm__logo__title">TechGenius</h1>
+        </div>
+        <p class="containerForm__description">Conversa con la tecnología de programación preferida. 
+        Ingresa tu API KEY y descubre mucho más sobre la tecnología.</p>
+        <label for="apikey" class="containerForm__label">API KEY</label>
+        <input type="text" class="containerForm__input" id="apikey" placeholder="Ingresa tu API KEY" required/>
+        <div class="containerForm__button">
+            <button id="button__clear">Borrar</button>
+            <button id="button__save">Guardar</button>
+        </div>
+        <button id="button__back">Volver a Inicio</button>
+        <div class="containerForm__link">
+            <p class="containerForm__link__text">¿Aún no tienes tu ApiKey?</p>
+            <a class="containerForm__link__open" href="https://openai.com/" target="_blank">Genera tu ApiKey</a>
+        </div>
+      </div>
+  `;
 
-  // Manejar eventos después de asegurar que el DOM esté completamente cargado
-  setTimeout(() => {
-    const buttonSave = document.querySelector("#button__save");
-    const buttonClear = document.querySelector("#button__clear");
-    const buttonBack = document.querySelector("#button__back");
-    const inputElement = document.querySelector(".container__input");
+  //getElementsAndEvents is a function that sets up the necessary events and behaviors for the elements within the component's view
+  const getElementsAndEvents = () => {
+    const inputElement = document.getElementById("apikey");
+    const buttonSave = document.getElementById("button__save");
+    const buttonBack = document.getElementById("button__back");
+    const buttonClear = document.getElementById("button__clear");
+    const containerForm = document.querySelector(".containerForm");
     const inputMessage = document.createElement("span");
     inputMessage.classList.add("input__message");
-    sectionElement.insertBefore(inputMessage, inputElement);
+    containerForm.insertBefore(inputMessage, inputElement);
+
     let APIKEY;
 
     // Obtener y enmascarar la API key guardada
@@ -73,14 +78,10 @@ export function ApiKey() {
       inputMessage.textContent = "¡API key borrada con éxito!";
     });
 
-    // Botón volver
     buttonBack.addEventListener("click", () => {
       navigateTo("/");
     });
-  });
+  };
 
-  //Actualizamos los estilos según la vista
-  setStyles("apiKey");
-  
-  return sectionElement;
+  return { view: apiKeyView, getElementsAndEvents };
 }

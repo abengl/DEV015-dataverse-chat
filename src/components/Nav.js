@@ -1,16 +1,16 @@
 import { navigateTo } from "../router.js";
 
-export function Nav() {
-  let navElement;
-  
-  if(document.querySelector("nav")) {
-    navElement = document.querySelector("nav");
-    return navElement;
-  }
+/**
+ * Nav function creates and returns a nav element.
+ * @returns {HTMLElement} - The HTML element representing the Nav.
+ */
+export const Nav = () => {
+  //Creamos el elemento nav
+  const navContainer = document.createElement("div");
+  navContainer.classList.add("nav");
 
-  navElement = document.createElement("nav");
-  navElement.classList.add("nav");
-  navElement.innerHTML = `
+  //Definimos la estructura del nav
+  navContainer.innerHTML = `
     <div class="nav__logo">
       <img class="nav__logo__image" src="../assets/logos/logo.svg" alt="Dataverse" />
       <h2>TechGenius</h2>
@@ -19,19 +19,19 @@ export function Nav() {
       <button class="nav__btn__panel" id="btn__panel">Panel</button>
       <button class="nav__btn__api" id="btn__api">Api</button>
     </div>
-  `;
-
-  navElement.querySelector(".nav__logo").addEventListener("click", () => {
-    navigateTo('/');
+    `;
+  //Añadimos los eventos a los botones
+  navContainer.querySelector(".nav__logo").addEventListener("click", () => {
+    navigateTo("/");
   });
 
-  navElement.querySelector("#btn__panel").addEventListener("click", () => {
-    navigateTo('/chatGrupal');
+  navContainer.querySelector("#btn__panel").addEventListener("click", () => {
+    navigateTo("/chat-group");
   });
 
-  navElement.querySelector("#btn__api").addEventListener("click", () => {
-    navigateTo('/apiKey');
+  navContainer.querySelector("#btn__api").addEventListener("click", () => {
+    navigateTo("/api-key");
   });
 
-  return navElement;
-}
+  return navContainer;
+};

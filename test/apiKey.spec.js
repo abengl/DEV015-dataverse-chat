@@ -1,48 +1,17 @@
-import { getApiKey, setApiKey } from '../src/lib/apiKey.js';
+import { getApiKey, setApiKey } from "../src/lib/apiKey.js";
 
-describe('getApiKey', () => {
-
-  it('debería devolver el valor de la API Key', () => {
-    // Desarrolla el test correspondiente aquí
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+describe("setApiKey", () => {
+  it("should set the API key in localStorage", () => {
+    const key = "1234567890";
+    setApiKey(key);
+    expect(localStorage.getItem("APIKEY")).toEqual(key);
   });
 });
 
-describe('setApiKey', () => {
-
-  it('debería establecer correctamente la API Key', () => {
-   // Desarrolla el test correspondiente aquí
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
+describe("getApiKey", () => {
+  it("should get the API key from localStorage", () => {
+    const key = "1234567890";
+    localStorage.setItem("APIKEY", key);
+    expect(getApiKey()).toEqual(key);
   });
 });

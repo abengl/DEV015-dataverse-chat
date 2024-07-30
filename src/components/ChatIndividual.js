@@ -1,9 +1,17 @@
 import { data } from "../data/dataset.js";
 
-export const Chat = (props) => {
+/**
+ * ChatIndividual is a function component that creates and returns the chat element.
+ * @param {object} [props={}] - Additional parameters for the view
+ * @returns containerChat - The HTML element representing the ChatIndividual component.
+ */
+export const ChatIndividual = (props) => {
+  //Vinculamos el id del chat con el objeto correspondiente
   const itemData = data.find((item) => item.id === props.id);
+
+  //Creamos la estructura del componente 
   const containerChat = document.createElement("div");
-  containerChat.classList.add("chat");
+  containerChat.classList.add("chatIndividual");
 
   containerChat.innerHTML = `
         <div class="chat__container">
@@ -49,6 +57,6 @@ export const Chat = (props) => {
           </button>
         </div>
     `;
+
   return containerChat;
 };
-

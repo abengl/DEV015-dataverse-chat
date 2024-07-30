@@ -1,6 +1,11 @@
 import { navigateTo } from "../router.js";
 
-export const cards = (data) => {
+/**
+ * Cards is a function that creates and returns a list of cards.
+ * @param {Array} data - An array of objects with the data to be displayed in the cards.
+ * @returns ulElement - The HTML element representing the list of cards.
+ */
+export const Cards = (data) => {
   const ulElement = document.createElement("ul");
 
   data.forEach((objeto) => {
@@ -37,14 +42,21 @@ export const cards = (data) => {
         `;
     const buttonElement = liElement.querySelector(".card__button");
     buttonElement.addEventListener("click", () => {
-      navigateTo("/chatIndividual", { id: objeto.id });
-    }) 
+      navigateTo("/chat", { id: objeto.id });
+    });
+
     ulElement.appendChild(liElement);
   });
+
   return ulElement;
 };
 
-export const cardsRanking = (data) => {
+/**
+ * CardsRanking is a function that creates and returns a list of cards for metrics.
+ * @param {Array} data - An array of objects with the data to be displayed in the cards.
+ * @returns ulElement - The HTML element representing the list of cards.
+ */
+export const CardsRanking = (data) => {
   const ulElement = document.createElement("ul");
 
   data.forEach((objeto) => {
@@ -55,7 +67,7 @@ export const cardsRanking = (data) => {
     liElement.setAttribute("data-id", objeto.id);
 
     liElement.innerHTML = ` 
-        <div class="card__image">
+            <div class="card__image">
           <img class="card__image__background" src="${objeto.imageUrl}" alt="${objeto.name}" itemprop="image"/>
           <span class="card__image__label" itemprop="educationalLevel"><h4 id="label__difficulty">${objeto.facts.difficultyLevel}</h4></span>
         </div>
@@ -84,5 +96,6 @@ export const cardsRanking = (data) => {
       `;
     ulElement.appendChild(liElement);
   });
+
   return ulElement;
 };
