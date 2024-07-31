@@ -36,5 +36,9 @@
     "createdAt": "2024-07-01T22:30:34.915Z",
     "version": "9.1.1",
     "commit": "1843c213affffa12aa456fa8842b6d28f97de2d3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.53.2"
   }
 }
