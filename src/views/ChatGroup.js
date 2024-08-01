@@ -8,12 +8,12 @@ import { Nav } from "../components/Nav.js";
 export function ChatGroup() {
   //Creamos la vista
   const viewGroup = document.createElement("div");
-  viewGroup.classList.add("chatGroup");
+  viewGroup.classList.add("chat__group");
 
   //Añadimos los componentes a la vista
   viewGroup.appendChild(Nav());
   const mainElement = document.createElement("main");
-  mainElement.classList.add("chatGroup__main");
+  mainElement.classList.add("chat__group__main");
   viewGroup.appendChild(mainElement);
 
   //Establecemos la estructura del main element
