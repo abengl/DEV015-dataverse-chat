@@ -1,5 +1,5 @@
 import { Nav } from "../components/Nav.js";
-import { navigateTo } from "../router.js";
+//import { navigateTo } from "../router.js";
 
 /**
  * ChatGroup is a function component that creates and returns a view element.
@@ -8,32 +8,88 @@ import { navigateTo } from "../router.js";
 export function ChatGroup() {
   //Creamos la vista
   const viewGroup = document.createElement("div");
-  viewGroup.classList.add("chatGroup");
+  viewGroup.classList.add("chat__group");
 
   //Añadimos los componentes a la vista
   viewGroup.appendChild(Nav());
   const mainElement = document.createElement("main");
-  mainElement.classList.add("chatGroup__main");
+  mainElement.classList.add("chat__group__main");
   viewGroup.appendChild(mainElement);
 
-  //Establecemos la estructura de la vista
-  mainElement.innerHTML = `
-    <div class="chatGroup__container">
-      <p class="chatGroup__container__description">Bienvenida al Chat Grupal! 
-      <br>
-      Ingresa tu nombre y comienza a chatear con tus compañeros.</p>
-      <p>Estamos probando</p>
-      <button id="button__back">Back Home</button>
-    </div>
-  `;
+  //Establecemos la estructura del main element
+  // componente chat grupal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // vista lateral con usuarios
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
   //getElementsAndEvents is a function that sets up the necessary events and behaviors for the elements within the component's view
-  const getElementsAndEvents = () => {
-    const buttonBack = document.querySelector("#button__back");
-    buttonBack.addEventListener("click", () => {
-      navigateTo("/");
-    });
-  };
+  const getElementsAndEvents = () => {};
 
   return { view: viewGroup, getElementsAndEvents };
 }

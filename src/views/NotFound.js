@@ -18,13 +18,16 @@ export function NotFound() {
 
   //Establecemos la estructura del main
   mainElement.innerHTML = `
-    <h1 class="not-found__title">"¿Perdida en el espacio?";</h1>
-    <button id="button__back">Ir a Home</button>
+    <div class="container">
+        <h1 class="container__title">"¿Perdida en el espacio?";</h1>
+        <img class="container__image" src="">
+        <button id="container__back">Ir a Home</button>
+    </div>
   `;
 
   //getElementsAndEvents is a function that sets up the necessary events and behaviors for the elements within the component's view
   const getElementsAndEvents = () => {
-    const buttonBack = document.querySelector("#button__back");
+    const buttonBack = document.querySelector("#container__back");
     buttonBack.addEventListener("click", () => {
       navigateTo("/");
     });
