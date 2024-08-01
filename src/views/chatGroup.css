@@ -4,7 +4,7 @@
     height: 10vh;
 }
 
-#btn__panel {
+.chat__group #btn__panel {
     display: none;
 }
 
