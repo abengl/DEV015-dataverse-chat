@@ -28,12 +28,6 @@ export const ChatIndividual = (props) => {
           ¡Hola, soy ${itemData.name}! ${itemData.shortDescription}
         </div>
       </div>
-      <div class="chat__send">
-        <div class="chat__message__text">
-          Hola!
-        </div>
-        <img class="chat__message__image" src="../assets/icons/user.svg" alt="chat icon" itemprop="image"/>
-      </div>
     </div>
     <div class="chat__input">
     <input 
@@ -70,7 +64,12 @@ export const ChatIndividual = (props) => {
     containerChat.querySelector(".overflow").appendChild(messageElement);
   };
 
-  let chatHistory = [];
+  let chatHistory = [
+    {
+      role: "system",
+      content: `Estamos haciendo un role-play para un chat. Tú eres ${itemData.name}, responde las preguntas en base a ese rol. Aquí tienes una descripción inicial como referencia: ${itemData.description}. Asegúrate de responder en primera persona con un máximo de 50 palabras.`,
+    },
+  ];
 
   // Función que envía obtiene el mensaje del usuario, genera la solicitud a OpenAI y muestra la información en el chat
   const sendMessage = () => {
@@ -82,14 +81,8 @@ export const ChatIndividual = (props) => {
     chatHistory.push({ role: "user", content: userMessage });
     inputField.value = "";
 
-    // Contexto adicional para la comunicación con OpenAI
-    const contextMessage = {
-      role: "system",
-      content: `Estamos haciendo un role-play para un chat. Tú eres ${itemData.name}, responde las preguntas en base a ese rol. Aquí tienes una descripción inicial como referencia: ${itemData.description}. Asegúrate de responder en primera persona con un máximo de 50 palabras.`,
-    };
-
     // Comunicación con OpenAI
-    communicateWithOpenAI([contextMessage, ...chatHistory])
+    communicateWithOpenAI(chatHistory)
       .then((response) => {
         // Añadir respuesta de la tecnología al chat
         const techMessage = response.choices[0].message.content;
