@@ -13,105 +13,104 @@ export const ChatIndividual = (props) => {
   //Creamos la estructura del componente
   const containerChat = document.createElement("div");
   containerChat.classList.add("chatIndividual");
-
   containerChat.innerHTML = `
-        <div class="chat__container">
-            <img class="chat__container__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
-            <div class="chat_details">
-              <h3 class="chat__details__name">${itemData.name}</h3>
-              <h4 class="chat__details__status">En linea</h4>
-            </div>
+    <div class="chat__container">
+      <img class="chat__container__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
+      <div class="chat_details">
+        <h3 class="chat__details__name">${itemData.name}</h3>
+        <h4 class="chat__details__status">En linea</h4>
+      </div>
+    </div>
+    <div class="overflow">
+      <div class="chat__reply">
+        <img class="chat__message__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
+        <div class="chat__reply__text">
+          ¡Hola, soy ${itemData.name}! ${itemData.shortDescription}
         </div>
-        <div class="overflow">
-          <div class="chat__send">
-            <div class="chat__message__text">
-              Hola, ¿podrías indicarme cuál es el principal uso en el mundo de desarrollo web?
-            </div>
-            <img class="chat__message__image" src="../assets/icons/user.svg" alt="chat icon" itemprop="image"/>
-          </div>
-          <div class="chat__reply">
-            <img class="chat__message__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
-            <div class="chat__reply__text">
-              ${itemData.shortDescription}
-            </div>
-          </div>
+      </div>
+      <div class="chat__send">
+        <div class="chat__message__text">
+          Hola!
         </div>
-        <div class="chat__input">
-          <input 
-            type="text" 
-            placeholder="Escribe tu mensaje..."
-            class="chat__input__field"/>
-          <button class="chat__input__button">
-            Enviar
-          </button>
-        </div>
+        <img class="chat__message__image" src="../assets/icons/user.svg" alt="chat icon" itemprop="image"/>
+      </div>
+    </div>
+    <div class="chat__input">
+    <input 
+    type="text" 
+    placeholder="Escribe tu mensaje..."
+    class="chat__input__field"/>
+    <button class="chat__input__button">
+    Enviar
+    </button>
+    </div>
     `;
 
   const inputField = containerChat.querySelector(".chat__input__field");
   const sendButton = containerChat.querySelector(".chat__input__button");
 
+  // Función para añadir el mensaje del usuario en el chat
+  const addMessageToChat = (message, role, logoUrl = null) => {
+    const messageElement = document.createElement("div");
+    messageElement.classList.add(
+      role === "user" ? "chat__send" : "chat__reply"
+    );
+    messageElement.innerHTML = `
+    ${
+      role === "user"
+        ? `
+      <div class="chat__message__text">${message}</div>
+      <img class="chat__message__image" src="../assets/icons/user.svg" alt="chat user icon" itemprop="image">`
+        : `
+      <img class="chat__message__image" src="${logoUrl}" alt="chat icon" itemprop="image"/>
+      <div class="chat__reply__text">${message}</div>
+    `
+    }
+    `;
+    containerChat.querySelector(".overflow").appendChild(messageElement);
+  };
+
+  let chatHistory = [];
+
+  // Función que envía obtiene el mensaje del usuario, genera la solicitud a OpenAI y muestra la información en el chat
   const sendMessage = () => {
-    const userMessage = inputField.value;
-    if (userMessage.trim() === "") return;
+    const userMessage = inputField.value.trim();
+    if (userMessage === "") return;
 
     // Añadir mensaje del usuario a la interfaz
-    const userMessageElement = document.createElement("div");
-    userMessageElement.classList.add("chat__send");
-    userMessageElement.innerHTML = `
-      <div class="chat__message__text">
-        ${userMessage}
-      </div>
-      <img class="chat__message__image" src="../assets/icons/user.svg" alt="chat icon" itemprop="image"/>
-    `;
-    containerChat.querySelector(".overflow").appendChild(userMessageElement);
-
-    // Limpiar el input del texto
+    addMessageToChat(userMessage, "user");
+    chatHistory.push({ role: "user", content: userMessage });
     inputField.value = "";
 
     // Contexto adicional para la comunicación con OpenAI
     const contextMessage = {
       role: "system",
-      content: `Responde en primera persona con un máximo de 50 palabras, como si fueras un ser humano. Eres ${itemData.name}. Aquí tienes información sobre ${itemData.name}: ${itemData.description}.`,
+      content: `Estamos haciendo un role-play para un chat. Tú eres ${itemData.name}, responde las preguntas en base a ese rol. Aquí tienes una descripción inicial como referencia: ${itemData.description}. Asegúrate de responder en primera persona con un máximo de 50 palabras.`,
     };
 
     // Comunicación con OpenAI
-    communicateWithOpenAI([
-      contextMessage,
-      { role: "user", content: userMessage },
-    ])
+    communicateWithOpenAI([contextMessage, ...chatHistory])
       .then((response) => {
-        console.log("Respuesta de OpenAI: ", response);
-
-        // Añadir mensaje del bot a la interfaz
-        const botMessage = response.choices[0].message.content;
-        const botMessageElement = document.createElement("div");
-        botMessageElement.classList.add("chat__reply");
-        botMessageElement.innerHTML = `
-        <img class="chat__message__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
-        <div class="chat__reply__text">
-          ${botMessage}
-        </div>
-      `;
-        containerChat.querySelector(".overflow").appendChild(botMessageElement);
+        // Añadir respuesta de la tecnología al chat
+        const techMessage = response.choices[0].message.content;
+        addMessageToChat(techMessage, "tech", itemData.extraInfo.logoUrl);
+        chatHistory.push({ role: "assistant", content: techMessage });
       })
       .catch((error) => {
-        console.error(`Error en la petición a OpenAI: ${error}`);
-        const errorMessageElement = document.createElement("div");
-        errorMessageElement.classList.add("chat__reply");
-        errorMessageElement.innerHTML = `
-        <img class="chat__message__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
-        <div class="chat__reply__text">
-          Lo siento, no pude responder tu pregunta. ${error}
-        </div>
-      `;
-        containerChat
-          .querySelector(".overflow")
-          .appendChild(errorMessageElement);
+        //Añadir el error retornado de OpenAI al chat
+        addMessageToChat(
+          `Lo siento, no pude responder tu pregunta. ${error}`,
+          "tech",
+          itemData.extraInfo.logoUrl
+        );
       });
   };
-  sendButton.addEventListener("click", sendMessage);
+
+  // Obtenemos el input y botón de envío del chat y añadimos eventos de escucha
   inputField.addEventListener("keydown", (event) => {
     if (event.key === "Enter") sendMessage();
   });
+  sendButton.addEventListener("click", sendMessage);
+
   return containerChat;
 };
