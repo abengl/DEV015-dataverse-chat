@@ -39,41 +39,34 @@ export const communicateWithOpenAI = (messages) => {
       if (!response.ok) {
         //Verifica si la respuesta no es exitosa (el código de estado HTTP no está en el rango 200-299).
         switch (response.status) {
-          case 400:
-            throw new Error("Solicitud incorrecta: " + response.statusText);
-          case 401:
-            throw new Error("No autorizado: " + response.statusText);
-          case 403:
-            throw new Error("Prohibido: " + response.statusText);
-          case 404:
-            throw new Error("No encontrado: " + response.statusText);
-          case 429:
-            throw new Error("Demasiadas solicitudes: " + response.statusText);
-          case 500:
-            throw new Error(
-              "Error interno del servidor: " + response.statusText
-            );
-          case 502:
-            throw new Error(
-              "Puerta de enlace incorrecta: " + response.statusText
-            );
-          case 503:
-            throw new Error("Servicio no disponible: " + response.statusText);
-          case 504:
-            throw new Error(
-              "Tiempo de espera de la puerta de enlace: " + response.statusText
-            );
-          default:
-            throw new Error(
-              "Error en la petición a OpenAI: " + response.statusText
-            );
+        case 400:
+          throw new Error("Solicitud incorrecta: " + response.statusText);
+        case 401:
+          throw new Error("No autorizado: " + response.statusText);
+        case 403:
+          throw new Error("Prohibido: " + response.statusText);
+        case 404:
+          throw new Error("No encontrado: " + response.statusText);
+        case 429:
+          throw new Error("Demasiadas solicitudes: " + response.statusText);
+        case 500:
+          throw new Error("Error interno del servidor: " + response.statusText);
+        case 502:
+          throw new Error("Puerta de enlace incorrecta: " + response.statusText);
+        case 503:
+          throw new Error("Servicio no disponible: " + response.statusText);
+        case 504:
+          throw new Error(
+            "Tiempo de espera de la puerta de enlace: " + response.statusText);
+        default:
+          throw new Error(
+            "Error en la petición a OpenAI: " + response.statusText);
         }
       }
       return response.json(); //Método que convierte la respuesta de la solicitud de un objeto JSON a un objeto JS
     })
     .catch((error) => {
       //Método que se llama si ocurre un error en cualquier parte de la promesa (incluyendo en then).
-      console.error(`Error en la petición a OpenAI: ${error}`);
       throw error; //detiene la ejecución y retorna el error. Usa throw new Error para lanzar errores en el flujo de promesas que ya están en ejecución.
     });
 };
