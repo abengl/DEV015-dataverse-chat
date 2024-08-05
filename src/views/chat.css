@@ -2,11 +2,11 @@
 @import "../components/chatIndividual.css";
 
 .chat {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height:100vh ;
-    display: grid;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
 }
 
 .chat__main {
@@ -88,16 +88,13 @@
 }
 
 .data__text__year,
-.data__text__creator {
+.data__text__creator,
+.data__text__users {
   color: var(--tx-color-medium);
 }
 
 .text__bold {
   font-weight: 600;
-}
-
-.data__text__users {
-  display: none;
 }
 
 .data__label {

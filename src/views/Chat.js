@@ -45,12 +45,13 @@ export function Chat(props) {
           <img id="title__logo" src="${itemData.extraInfo.logoUrl}" alt="${itemData.name}" itemprop="image"/>
           <h3 id="title__name" itemprop="name">${itemData.name}</h3>
         </div>
-        <p class="data__text__description" itemprop="description">${itemData.description}</p>
+        <p class="data__text__description" itemprop="description">${itemData.shortDescription}</p>
         <span class="data__text__year" itemprop="dateCreated">
           <span class="text__bold">Creado en:</span> ${itemData.facts.yearOfCreation}</span>
         <span class="data__text__creator" itemprop="creator">
           <span class="text__bold">Autor:</span> ${itemData.facts.creator}</span>
-        <span class="data__text__users" itemprop="usageInfo">${itemData.facts.percentageOfUsers}</span>
+        <span class="data__text__users" itemprop="usageInfo">
+          <span class="text__bold">Porcentaje de usuarios:</span> ${itemData.facts.percentageOfUsers}</span>
       </div>
       <div class="data__label">
         <span class="data__label__text" itemprop="additionalType">${itemData.facts.type}</span>
