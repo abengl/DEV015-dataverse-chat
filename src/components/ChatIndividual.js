@@ -50,21 +50,16 @@ export const ChatIndividual = (props) => {
       role === "user" ? "chat__send" : "chat__reply"
     );
     messageElement.innerHTML = `
-    ${
-      role === "user"
-        ? `
+    ${role === "user"? `
       <div class="chat__message__text">${message}</div>
-      <img class="chat__message__image" src="../assets/icons/user.svg" alt="chat user icon" itemprop="image">`
-        : `
+      <img class="chat__message__image" src="../assets/icons/user.svg" alt="chat user icon" itemprop="image">`: `
       <img class="chat__message__image" src="${logoUrl}" alt="chat icon" itemprop="image"/>
       <div class="chat__reply__text">${message}</div>
-    `
-    }
-    `;
+    `}`;
     containerChat.querySelector(".overflow").appendChild(messageElement);
   };
 
-  let chatHistory = [
+  const chatHistory = [
     {
       role: "system",
       content: `Estamos haciendo un role-play para un chat. Tú eres ${itemData.name}, responde las preguntas en base a ese rol. Aquí tienes una descripción inicial como referencia: ${itemData.description}. Asegúrate de responder en primera persona con un máximo de 50 palabras.`,
