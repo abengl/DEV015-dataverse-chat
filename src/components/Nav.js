@@ -16,7 +16,7 @@ export const Nav = () => {
       <h2>TechGenius</h2>
     </div>
     <div class="nav__btn">
-      <button class="nav__btn__panel" id="btn__panel">Panel</button>
+      <button class="nav__btn__panel" id="btn__panel">Chat Grupal</button>
       <button class="nav__btn__api" id="btn__api">Api</button>
     </div>
     `;
