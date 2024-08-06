@@ -42,8 +42,9 @@ h2 {
 
 .nav__btn__panel,
 .nav__btn__api {
-  width: 90px;
-  height: 30px;
+  width: fit-content;
+  height: 40px;
+  padding: 0 12px;
   font-family: var(--ff-sans);
   font-size: var(--fs-normal);
   color: var(--clr-primary-dark);
