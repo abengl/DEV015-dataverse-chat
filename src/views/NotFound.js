@@ -16,6 +16,10 @@ export function NotFound() {
   mainElement.classList.add("not__found__main");
   notFoundView.appendChild(mainElement);
 
+  //Cambiamos el título y el favicon
+  document.title = "NotFound";
+  document.querySelector("[type='image/x-icon']").href ="../assets/logos/logo-color.svg";
+
   //Establecemos la estructura del main
   mainElement.innerHTML = `
     <div class="container">
@@ -41,6 +45,6 @@ export function NotFound() {
       navigateTo("/");
     });
   };
-  
+
   return { view: notFoundView, getElementsAndEvents };
 }

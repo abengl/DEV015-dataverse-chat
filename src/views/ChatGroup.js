@@ -24,6 +24,11 @@ export function ChatGroup() {
   chatGroup.classList.add("group__container");
   mainElement.appendChild(chatGroup);
 
+  //Cambiamos el título y el favicon
+  document.title = "ChatGroup";
+  document.querySelector("[type='image/x-icon']").href =
+    "../assets/logos/logo-color.svg";
+
   // contenedor de logos tecnológicos
   const logoTecnological = document.createElement("div");
   logoTecnological.classList.add("logo__tecnological");
@@ -52,12 +57,11 @@ export function ChatGroup() {
       con 24 tecnologías de programación en tiempo real. 🌟</h4>
   `;
   logoTecnological.appendChild(details);
-    
 
   // contenedor de chat
   const chat = document.createElement("div");
   chat.classList.add("chat_tecnologic");
-  
+
   chat.innerHTML = `
     <div class="details__overflow">
     </div>
@@ -90,7 +94,7 @@ export function ChatGroup() {
     `;
 
     ulTechnologies.appendChild(liTechnologies);
-  })
+  });
 
   //getElementsAndEvents is a function that sets up the necessary events and behaviors for the elements within the component's view
   const getElementsAndEvents = () => {};
