@@ -1,5 +1,6 @@
 import { data } from "../data/dataset.js";
 import { communicateWithOpenAI } from "../lib/openAIApi.js";
+import { navigateTo } from "../router.js";
 
 /**
  * ChatIndividual is a function component that creates and returns the chat element.
@@ -14,11 +15,14 @@ export const ChatIndividual = (props) => {
   const containerChat = document.createElement("div");
   containerChat.classList.add("chatIndividual");
   containerChat.innerHTML = `
-    <div class="chat__container">
-      <img class="chat__container__image" src="${itemData.extraInfo.logoUrl}" alt="chat icon" itemprop="image"/>
-      <div class="chat_details">
-        <h3 class="chat__details__name">${itemData.name}</h3>
-        <h4 class="chat__details__status">En linea</h4>
+    <div class="chat__title">
+      <img class="chat__title__arrow" src="../assets/icons/arrow-left.svg" alt="back arrow" itemprop="image"/>
+      <div class="chat__title__text">
+        <img class="chat__title__logo" src="${itemData.extraInfo.logoUrl}" alt="chat technology logo" itemprop="image"/>
+        <div class="chat_details">
+          <h1 class="chat__details__name">${itemData.name}</h1>
+          <span class="chat__details__status">En linea</span>
+        </div>
       </div>
     </div>
     <div class="overflow">
@@ -30,18 +34,19 @@ export const ChatIndividual = (props) => {
       </div>
     </div>
     <div class="chat__input">
-    <input 
-    type="text" 
-    placeholder="Escribe tu mensaje..."
-    class="chat__input__field"/>
-    <button class="chat__input__button">
-    Enviar
-    </button>
+      <textarea class="chat__input__field" name="user-input" placeholder="Escribe un mensaje..."></textarea>
+      <button class="chat__input__button">
+        <span class="material-symbols-outlined">arrow_upward_alt</span>
+      </button>
     </div>
     `;
-
+  containerChat.querySelector(".chat__title__arrow").addEventListener("click", () => {
+    navigateTo("/");
+  });
+  
   const inputField = containerChat.querySelector(".chat__input__field");
   const sendButton = containerChat.querySelector(".chat__input__button");
+  const chatContainer = containerChat.querySelector(".overflow"); 
 
   // Función para añadir el mensaje del usuario en el chat
   const addMessageToChat = (message, role, logoUrl = null) => {
@@ -56,7 +61,8 @@ export const ChatIndividual = (props) => {
       <img class="chat__message__image" src="${logoUrl}" alt="chat icon" itemprop="image"/>
       <div class="chat__reply__text">${message}</div>
     `}`;
-    containerChat.querySelector(".overflow").appendChild(messageElement);
+    chatContainer.appendChild(messageElement);
+    chatContainer.scrollTop = chatContainer.scrollHeight; 
   };
 
   const chatHistory = [

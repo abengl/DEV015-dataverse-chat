@@ -28,9 +28,16 @@ export function Chat(props) {
     return chatView;
   }
 
+  // Añadimos el título, el favicon y hacemos disponible el ícono del input
+  document.title = `Chat con ${itemData.name}`;
+  document.querySelector("[type='image/x-icon']").href = itemData.extraInfo.logoUrl;
+  document.querySelector("head").innerHTML += `
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+  `;
+
   // Creamos la estructura de información adicional
   const dataElement = document.createElement("li");
-  dataElement.classList.add("data");
+  dataElement.classList.add("data__container");
   dataElement.setAttribute("itemscope", "");
   dataElement.setAttribute("itemtype", "https://schema.org/CreativeWork");
   dataElement.setAttribute("data-id", itemData.id);
