@@ -2,36 +2,24 @@
 
 ## Índice
 
-* [1. Preámbulo](#1-preámbulo)
+* [1. Resumen del proyecto](#1-resumen-del-proyecto)
 * [2. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Consideraciones generales](#3-consideraciones-generales)
+* [3. Historias de Usuario](#3-historias-de-usuario)
 * [4. Funcionalidades](#4-funcionalidades)
-* [5. Consideraciones técnicas](#5-consideraciones-técnicas)
+* [5. Diseño de Interfaz y Prototipos](#5-diseño-de-interfaz-y-prototipos)
 * [6. Hitos](#6-hitos)
-* [7. Criterios de aceptación mínimos del proyecto](#7-criterios-de-aceptación-mínimos-del-proyecto)
+* [7. Responsividad](#7-responsividad)
 * [8. Objetivos de aprendizaje](#8-objetivos-de-aprendizaje)
 * [9. Pistas, tips y lecturas complementarias](#9-pistas-tips-y-lecturas-complementarias)
 * [10. Consideraciones para pedir tu Project Feedback](#10-consideraciones-para-pedir-tu-project-feedback)
 
 ***
 
-## 1. Preámbulo
+## 1. Resumen del proyecto
 
-En nuestro día a día, las aplicaciones web son como amigas
-inseparables. Desde las redes sociales hasta las herramientas de
-trabajo, las usamos todo el tiempo. Pero lo que hace que este
-momento sea realmente especial es que estas aplicaciones nos pueden
-abrir una puerta a algo asombroso: la interacción con inteligencia
-artificial.
+**TechGenius** es una SPA (Single Page Application) diseñada para estudiantes de programación que desean estar al tanto de las últimas tendencias tecnológicas y mantener conversaciones con las tecnología de programación.
 
-¿Qué tal si pudiéramos conversar con alguien que vivió hace más de
-cien años o incluso con los personajes de nuestras series y
-películas favoritas o con entidades que normalmente no pueden hablar
-como por ejemplo planetas o animales? La inteligencia artificial nos
-puede ayudar a entender el pasado y a conectarnos con figuras
-históricas, así como a sumergirnos en mundos ficticios.
-
-![Preview app](https://github-production-user-asset-6210df.s3.amazonaws.com/123121338/271433237-2bd1477b-15ef-49d4-9fcb-226b3263c46a.png)
+Nuestra interfaz intuitiva permite explorar tecnologías clasificadas en categorías como _Lenguajes de Programación, Frameworks_ y _Markup_, así como en campos de aplicación como _Frontend, Backend_ y _Data Science_. Los usuarios pueden ordenar los resultados para encontrar información relevante de manera rápida y acceder a un ranking actualizado de las tecnologías más populares. Además, la función de limpieza de filtros con un solo clic simplifica la navegación y personalización de la búsqueda. TechGenius es tu puerta de entrada al futuro tecnológico, ofreciendo una forma fácil y eficiente de descubrir y dominar las tendencias actuales en tecnología.
 
 ## 2. Resumen del proyecto
 
@@ -55,37 +43,27 @@ vistas de la aplicación
 * Entender la asincronía en JavaScript
 * Crear una suite de pruebas unitarias que permitan testear código asíncrono
 
-## 3. Consideraciones generales
+## 3. Historias de Usuario
+### Historia de Usuario 1: 
+Como estudiante de programación, quiero que la aplicación sea responsive y funcional para asegurarme de que pueda usarla en diferentes dispositivos y tamaños de pantalla sin problemas, obteniendo una experiencia de usuario consistente y óptima
 
-* Este proyecto se debe resolver en duplas.
+### Historia de Usuario 2:  
+Como estudiante de programación, quiero poder navegar a diferentes vistas dentro de una sola página de la aplicación para poder acceder a distintas funcionalidades y secciones sin necesidad de recargar la página, mejorando la eficiencia y la experiencia de navegación.
 
-* El rango de tiempo estimado para completar el proyecto es de 4 a 5 Sprints.
+### Historia de Usuario 3:  
+Como estudiante de programación, quiero ver información detallada sobre una tecnología específica para obtener una comprensión completa y profunda de sus características y funcionalidades, facilitando mi aprendizaje y toma de decisiones.
 
-* La lógica del proyecto debe estar implementada completamente en JavaScript
-  (ES6+), HTML y CSS. Para este proyecto **no está permitido** utilizar
-  _frameworks_ o librerías de CSS y JS.
+### Historia de Usuario 4:
+Quiero obtener la tecnologías de programación mas usada, mas antiga y más actual, para identificar rápidamente la información proporcionada.
 
-* Reutilizar cierta parte del código del proyecto Dataverse, sobre todo el dataset.
-  Además debes refactorizar el código para que sea más modular y reutilizable
-  implementando nuevas funciones para lograr las funcionalidades requeridas
-  en este proyecto.
+### Historia de Usuario 5:
+Como estudiante de programación, quiero configurar mi API Key para interactuar con la API de OpenAI para establecer conversaciones interactivas y utilizar las capacidades avanzadas de la inteligencia artificial en la aplicación.
 
-* El proyecto será entregado subiendo tu código a GitHub (commit/push) y la
-  interfaz será desplegada usando cualquiera de estas opciones:
-  [Vercel](https://vercel.com/) o [Netlify](https://www.netlify.com/).
+### Historia de Usuario 6:
+Como estudiante de programación, quiero interactuar con una tecnología específica en un chat individual para obtener asistencia personalizada y detalles específicos sobre esa tecnología, mejorando mi aprendizaje y resolución de problemas.
 
-* La división y organización del trabajo debe permitir, sin excepciones, que
-  **cada integrante** del equipo practique el aprendizaje de todo lo involucrado
-  en **cada historia**. _No se dividan el trabajo como en una fábrica._
-  - ¿Hasta acá has avanzado en tus proyectos con cierta fluidez y sin mayores
-    problemas? Sé generosa con tus compañeras, permíteles aprender y practicar
-    sin restricciones, aunque tome un poco más de tiempo. Aprovecha de
-    _coachearlas_, de hacer _pair programming_, una de las mejores maneras de
-    aprender es explicando verbalmente.
-  - ¿Se te está haciendo difícil y te cuesta un poco más avanzar? No te quedes
-    con las partes "fáciles" del proyecto, conversa, negocia, exige tu oportunidad
-    para practicar y aprender lo que se te hace más difícil.
-  Para comenzar tendrás que hacer un _fork_ y _clonar_ este repositorio.
+### Historia de Usuario 7:
+Como estudiante de programación, quiero que la aplicación maneje errores de manera adecuada para asegurarme de que los problemas se resuelvan de manera eficiente y que la experiencia del usuario sea lo menos afectada posible.
 
 ## 4. Funcionalidades
 
@@ -174,95 +152,36 @@ funcionalidad de chat en tu aplicación, más no tomes el diseño como
 referencia para tu proyecto, siente libre de hacer volar tu imaginación
 diseñando tu propia interfaz.
 
-## 5. Consideraciones técnicas
+## 5. Diseño de Interfaz y Prototipos
 
-La lógica del proyecto debe estar implementada completamente en JavaScript
-(ES6), HTML y CSS. En este proyecto NO está permitido usar librerías o
-frameworks, solo [vanilla JavaScript](https://medium.com/laboratoria-how-to/vanillajs-vs-jquery-31e623bbd46e).
+La interfaz de **TechGenius** está diseñada para ofrecer una experiencia intuitiva y atractiva, permitiendo a los usuarios explorar, aprender y dominar tecnologías emergentes de manera eficiente y organizada, asi como también chatear con las mismas. Con un enfoque en la usabilidad y la presentación clara de información, el diseño facilita la navegación y la comprensión de los datos sobre las tecnologías.
 
-El _boilerplate_ que viene con el proyecto es una estructura inicial. Ustedes
-deben ir agregando más archivos conforme vayan avanzando en su proyecto.
-La siguiente es una estructura de archivos que recomendamos:
+### Test de Usabilidad: 
 
-```text
-.
-├── src
-|  ├── components
-|  ├── data
-|  |  └── dataset.js
-|  ├── lib
-|  |  └── dataFunctions.js
-|  ├── views
-|  ├── index.html
-|  ├── index.js
-|  ├── router.js
-|  └── style.css
-├── test
-|  └── dataFunctions.spec.js
-|  └── example.spec.js
-├── README.md
-└── package.json
+Basándonos en los resultados del test de usabilidad realizado con una muestra de usuarios objetivos de la aplicación web, se identifican las siguientes necesidades que se abordaron para mejorar la experiencia del usuario:
 
-```
+* **Mejorar la descripción  del boton Panel:**  El botón "Panel" debería llamarse chat grupal.
 
-### `src/components`
+* **Modificar los icons de dificultad:**  Los íconos actuales deben ser reemplazados por etiquetas que indiquen claramente el nivel de dificultad, como "Básico" o "Avanzado". 
 
-Esta carpeta contendrá archivos JavaScript
-que representan [componentes](https://lenguajejs.com/vuejs/componentes/que-es-un-componente/)
-reutilizables de tu aplicación. Estos componentes
-pueden ser elementos de la interfaz de usuario que se utilizan en varias partes
-de tu aplicación. Organizar tus componentes de esta manera ayuda a mantener un
-código más modular y reutilizable.
+* **Revisar las etiquetas de información:**   Las etiquetas parecen botones en las tarjetas, quizás quitar el degradado y probar un color plano.
 
-### `src/data`
+* **Colores en el chat:** El chat da la sensación de que está al revés, el color más fuerte en el usuario (globo), además de ajustar la alineación del icon. .
 
-En esta carpeta están los datos con los que vas a trabajar (los datos de ejemplo
-o los datos que generarías con ayuda de la inteligencia artificial).
+De acuerdo a lo anterior, a la frecuencia y el impacto de los problemas encontrados, se  priorizó la implementación de las mejoras para optimizar la experiencia del usuario de manera eficiente.
 
-### `src/lib`
+### Prototipos de Alta Fidelidad: 
 
-En esta carpeta, crearás módulos que contengan funcionalidades no relacionadas
-al DOM. Aquí podrás incluir el archivo
-`dataFunctions.js` que contiene las funciones que te permiten filtrar,
-ordenar y hacer cálculos agregados. También podrás crear  archivos con
-las funciones que
-interactúen con la API de inteligencia artificial o utilidades destinadas
-a almacenar datos en el local storage.
+El prototipo de alta fidelidad de **TechGenius** es la versión más detallada y refinada de la interfaz, integrando todos los estilos visuales y elementos interactivos para ofrecer una experiencia de usuario completa y envolvente. Este prototipo incorpora la estética final, la funcionalidad completa y la interacción intuitiva, sirviendo como una base precisa para el desarrollo final de la aplicación. 
+A continuación, se adjuntan algunas imágenes del prototipo de alta fidelidad de la aplicación web.
 
-### `src/views`
+![prototipo-desktop](https://cdn.glitch.global/25528f5b-58e5-4224-ae4c-5f2f3f710606/prototipo_desktop.png?v=1719354048951)
 
-Esta carpeta generalmente contiene archivos de los componentes que
-representan las diferentes páginas o vistas de tu aplicación.
-Cada vista (view) puede tener su propio archivo
-JavaScript, que exporta una función que es responsable de generar
-los elementos del DOM.
+![prottotipo-chat-desktop](/src/assets/images/chat.png)
 
-### `src/index.html`
+![prototipo-mobile](https://cdn.glitch.global/25528f5b-58e5-4224-ae4c-5f2f3f710606/prototipo_mobile.png?v=1719354044777)
 
-Como en el proyecto anterior, existe un archivo `index.html`. En este archivo
-HTML encontrarás un elemento DOM `<div id='root'></div>` donde vas a
-renderizar las diferentes vistas de tu aplicación.
-
-### `src/index.js`
-
-El punto de partida para tu SPA sera el archivo `src/index.js`. Acá encontrarás
-algunas instrucciones y comentarios para guiarte en el inicio del desarrollo
-de tu aplicación.
-
-### `src/router.js`
-
-En este archivo vas a manejar el enrutamiento de tu aplicación. Es un archivo
-que debes crearlo por tu cuenta.
-
-### `src/style.css`
-
-Es un archivo que debes crearlo por tu cuenta para agregar los estilos que
-necesites para tu aplicación.
-
-### `src/test`
-
-Esta carpeta contiene los tests de tus funciones y componentes. Por ejemplo
-los tests de dataFunctions deben estar aquí.
+![prototipo-apikey-mobile](/src/assets/images/apikey.png)
 
 ## 6. Hitos
 
@@ -284,89 +203,17 @@ te puede ayudar a organizar tu trabajo.
 * [Hito 4](./docs/04-milestone.md)
 * [Hito 5](./docs/05-milestone.md)
 
-## 7. Criterios de aceptación mínimos del proyecto
+## 7. Responsividad
 
-Además de las funcionalidades que definimos en la sección de
-[Funcionalidades](#4-funcionalidades), tu proyecto debe cumplir con los
-siguientes requisitos:
+En el centro de nuestro diseño se encuentra la experiencia del usuario, y por ello, hemos priorizado la responsividad para garantizar una interacción óptima en cualquier dispositivo. Los elementos de la interfaz se adaptan dinámicamente, ajustándose a las pantallas de móviles, tabletas y ordenadores de escritorio, brindando una visualización clara y una navegación fluida.
 
-### Definición del producto
+Para lograr esta adaptabilidad, hemos implementado diversas técnicas de diseño y desarrollo:
 
-Documenta brevemente tu trabajo en el archivo `README.md` de tu repositorio,
-contándonos cómo fue tu proceso de diseño y cómo crees que el producto resuelve
-el problema (o problemas) que tiene tu usuaria.
+* **Diseño responsive:** Los componentes de la interfaz se reconfiguran automáticamente para una visualización óptima en diferentes tamaños de pantalla, desde móviles compactos hasta pantallas de escritorio amplias.
 
-### Historias de usuaria
+* **Media Queries:** Empleamos Media Queries en CSS para aplicar estilos específicos según el tamaño de la pantalla, optimizando la presentación de la información y la navegación en cada dispositivo.
 
-Una vez que entiendas las necesidades de tus usuarias, escribe las [Historias
-de Usuaria](https://es.wikipedia.org/wiki/Historias_de_usuario) que representen
-todo lo que la usuaria necesita hacer/ver. Las **Historias de Usuaria** deben
-ser el resultado de tu proceso de investigación o _research_ de tus usuarias.
-
-Asegúrate de incluir la definición de terminado (_definition of done_) y los
-Criterios de Aceptación para cada una.
-
-Usa tus historias de usuaria para planificar tus sprints dividiendo
-cada historia en tareas.
-
-En la medida de lo posible, termina una Historia de Usuaria antes de pasar
-a la siguiente (cumpliendo con la Definición de Terminado y los Criterios
-de Aceptación).
-
-### Diseño de la Interfaz de Usuaria
-
-#### Prototipo de baja fidelidad
-
-Durante tu trabajo deberás haber hecho e iterado bocetos (_sketches_) de tu
-solución usando papel y lápiz. Te recomendamos tomar fotos de todas las
-iteraciones que hagas, que las subas a tu repositorio y las menciones en tu
-`README.md`.
-
-Recuerda pedir feedback de tu prototipo a tus compañeras y/o coaches.
-
-#### Prototipo de alta fidelidad
-
-Lo siguiente es diseñar tu Interfaz de Usuaria (UI por sus siglas en inglés -
-_User Interface_). Para eso debes aprender a utilizar alguna herramienta de
-diseño visual. Nosotros te recomendamos [Figma](https://www.figma.com/) que es
-una herramienta que funciona en el navegador y, además, puedes crear una cuenta
-gratis. Sin embargo, eres libre de utilizar otros editores gráficos como
-Illustrator, Photoshop, etc.
-
-El diseño debe representar el _ideal_ de tu solución. Digamos que es lo que
-desearías implementar si tuvieras tiempo ilimitado para trabajar. Además, tu
-diseño debe seguir los fundamentos de _visual design_.
-
-Recuerda pedir feedback de tu prototipo a tus compañeras y/o coaches.
-
-### Testeos de usabilidad
-
-Durante el reto deberás hacer _tests_ de usabilidad con distintos usuarias,
-y con base en los resultados, deberás iterar tus diseños. Cuéntanos
-qué problemas de usabilidad detectaste a través de los _tests_ y cómo los
-mejoraste en tu propuesta final.
-
-### Implementación de la Interfaz de Usuaria (HTML/CSS/JS)
-
-Luego de diseñar tu interfaz de usuaria deberás trabajar en su implementación.
-**No** es necesario que construyas la interfaz exactamente como la diseñaste.
-Tu tiempo de hacking es escaso, así que deberás priorizar.
-
-Revisa [las funcionalidades](#4-funcionalidades) que el proyecto pide del interfaz.
-
-### Pruebas unitarias
-
-El _boilerplate_ de este proyecto no incluye Pruebas Unitarias (_tests_), así es
-que  tendrás que escribirlas tú para las funciones encargadas de  _procesar_,
-_filtrar_ y _ordenar_ la data, así como _calcular_ estadísticas.
-Te recomendamos usar
-el framework [Jest](https://jestjs.io/) para ejecutar las pruebas unitarias.
-Consultar su documentación.
-
-Tus _pruebas unitarias_ deben dar una cobertura del 70% de _statements_
-(_sentencias_), _functions_ (_funciones_), _lines_ (_líneas_), y _branches_
-(_ramas_) del archivo `src/dataFunctions.js` que contenga tus funciones y
-está detallado en la sección de [Consideraciones técnicas](#5-consideraciones-técnicas).
+* **Pruebas exhaustivas:** Realizamos pruebas meticulosas en una amplia gama de dispositivos y resoluciones para garantizar la compatibilidad y ofrecer una experiencia uniforme en todos ellos.
 
 ## 8. Objetivos de aprendizaje
 
