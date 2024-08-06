@@ -106,15 +106,6 @@ button:active {
     gap: 10px;
   }
 
-  .chat__main {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .data {
-    display: none;
-  }
-
   footer {
     display: flex;
     flex-direction: column;
