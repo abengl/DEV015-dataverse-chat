@@ -42,6 +42,7 @@
   );
   --clr-label-border: rgba(13, 14, 19, 0.08);
   --clr-label-background: rgba(107, 83, 255, 0.04);
+  --clr-chat-division: rgba(0, 0, 0, 0.18);
 }
 
 * {
@@ -50,7 +51,7 @@
   box-sizing: border-box;
 }
 
-body {
+body, textarea[name="user-input"] {
   font-family: var(--ff-sans);
   font-size: var(--fs-normal);
   font-weight: var(--fw-normal);
@@ -103,15 +104,6 @@ button:active {
     flex-direction: column;
     align-items: end;
     gap: 10px;
-  }
-
-  .chat__main {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .data {
-    display: none;
   }
 
   footer {

@@ -10,6 +10,11 @@ export function ApiKey() {
   const apiKeyView = document.createElement("div");
   apiKeyView.classList.add("apiKey");
 
+  //Cambiamos el título y el favicon
+  document.title = "ApiKey";
+  document.querySelector("[type='image/x-icon']").href =
+    "assets/logos/logo-color.svg";
+
   //Desarrollamos la estructura de la vista
   apiKeyView.innerHTML = `
       <div class="containerForm">

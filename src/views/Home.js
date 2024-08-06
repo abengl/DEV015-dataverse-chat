@@ -19,6 +19,10 @@ export function Home() {
   homeView.appendChild(mainElement);
   homeView.appendChild(Footer());
 
+  //Cambiamos el título y el favicon
+  document.title = "TechGenius";
+  document.querySelector("[type='image/x-icon']").href = "assets/logos/logo-color.svg";
+
   //Funciones para mostrar las cartas, filtros, ordenar y ranking
   function displayCards(data) {
     mainElement.innerHTML = "";
