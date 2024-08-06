@@ -2,50 +2,50 @@
 @import "../components/chatIndividual.css";
 
 .chat {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height:100vh ;
-    display: grid;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  background: var(--tx-color-light);
 }
 
 .chat__main {
   width: 100%;
-  max-height: 100vh;
-  padding: 1rem;
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  column-gap: 1.5rem;
+  grid-template-columns: 65% auto;
 }
 
-.data {
+.data__container {
+  height: calc(100vh - 70px);
   width: 100%;
-  height: 700px;
   display: grid;
-  grid-template-rows: 100px auto auto;
-  row-gap: 10px;
-  background-color: white;
-  box-shadow: 0px 5px 20px 0px rgba(103, 110, 144, 0.15);
-  border-radius: 15px;
-  position: relative;
+  grid-template-rows: repeat(3, min-content);
+  row-gap: 2rem;
+  background: #fff;
+  padding-bottom: 2rem;
 }
 
 .data__image {
+  width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .data__image__background {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 200px;
   object-fit: cover;
-  border-radius: 15px 15px 0 0;
+  display: block;
 }
 
 .data__image__label {
-  padding: 3px 10px;
+  max-width: fit-content;
+  padding: 4px 12px;
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
   border-radius: 25px;
   text-align: center;
   font-weight: 700;
@@ -60,11 +60,10 @@
 }
 
 .data__text {
-  padding: 0 30px;
-  line-height: var(--lh-normal);
+  padding-inline: 1.5rem;
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
+  row-gap: 0.75rem;
 }
 
 .data__text__title {
@@ -88,7 +87,8 @@
 }
 
 .data__text__year,
-.data__text__creator {
+.data__text__creator,
+.data__text__users {
   color: var(--tx-color-medium);
 }
 
@@ -96,17 +96,12 @@
   font-weight: 600;
 }
 
-.data__text__users {
-  display: none;
-}
-
 .data__label {
-  padding: 0 30px 10px;
+  padding-inline: 1.5rem;
   display: flex;
-  flex-direction: row;
   align-items: center;
   text-align: center;
-  column-gap: 10px;
+  column-gap: 1rem;
 }
 
 .data__label__text {
@@ -117,3 +112,17 @@
   color: var(--tx-color-dark);
   background: var(--clr-label-background);
 }
+
+@media (max-width: 991px) {
+  .chat__main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60% auto;
+  }
+
+  .data__container {
+    row-gap: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
