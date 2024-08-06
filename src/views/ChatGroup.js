@@ -28,6 +28,9 @@ export function ChatGroup() {
   document.title = "ChatGroup";
   document.querySelector("[type='image/x-icon']").href =
     "../assets/logos/logo-color.svg";
+  document.querySelector("head").innerHTML += `
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+    `;
 
   // contenedor de logos tecnológicos
   const logoTecnological = document.createElement("div");
@@ -67,7 +70,7 @@ export function ChatGroup() {
     </div>
     <div class="chat__input">
       <input type="text" placeholder="Escribe tu mensaje..."class="chat__input__field"/>
-      <button class="chat__input__button">Enviar</button>
+      <button class="chat__input__button"><span class="material-symbols-outlined">arrow_upward_alt</span></button>
     </div>
     `;
 
