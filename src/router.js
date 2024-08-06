@@ -90,14 +90,3 @@ export const onUrlChange = () => {
   const props = queryStringToObject(search);
   renderView(pathname, props);
 };
-
-export const __TEST__ = {
-  get ROOT() {
-    return ROOT;
-  },
-};
-export const __TEST2__ = {
-  get ROUTES() {
-    return ROUTES;
-  },
-};

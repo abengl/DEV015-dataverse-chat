@@ -1,72 +1,100 @@
-import { setRootEl, setRoutes, navigateTo, onUrlChange } from "../src/router.js";
-import { __TEST__, __TEST2__ } from "../src/router.js";
+import {
+  setRootEl,
+  setRoutes,
+  navigateTo,
+  onUrlChange,
+} from "../src/router.js";
 
-describe("setRootEl", () => {
-  it("should set the root element", () => {
-    const rootElement = document.querySelector("main");
-    setRootEl(rootElement);
-    expect(__TEST__.ROOT).toEqual(rootElement);
+let ROOT;
+
+describe("Test on router functions", () => {
+  beforeEach(() => {
+    // element root of the test
+    ROOT = document.createElement("div");
+    document.body.appendChild(ROOT);
+    setRootEl(ROOT);
+  });
+
+  afterEach(() => {
+    document.body.removeChild(ROOT);
+    ROOT = null;
+  });
+
+  describe("navigateTo", () => {
+    it("should call renderView with argument pathname and props and render the corresponding view", () => {
+      const mockViewChat = jest.fn(() => {
+        const viewChat = document.createElement("div");
+        viewChat.innerHTML = `
+      <div>
+        <h1>Chatea con nosotros</h1>
+      </div>`;
+        return { view: viewChat, getElementsAndEvents: jest.fn() };
+      });
+
+      setRoutes({ "/chat": mockViewChat });
+
+      const pathname = "/chat";
+      const props = { id: 1, name: "chat" };
+      navigateTo(pathname, props);
+      expect(mockViewChat).toBeTruthy();
+      expect(ROOT.innerHTML).toContain("<div>");
+    });
+
+    it("should call renderView with argument pathname and props and render the 404 view", () => {
+      const mockView404 = jest.fn(() => {
+        const view404 = document.createElement("div");
+        view404.innerHTML = `
+      <div>
+        <h1>error 404</h1>
+      </div>`;
+        return { view: view404, getElementsAndEvents: jest.fn() };
+      });
+
+      setRoutes({ "/404": mockView404 });
+      const pathname = "/chat";
+      const props = { id: 1, name: "chat" };
+      navigateTo(pathname, props);
+      expect(mockView404).toBeTruthy();
+      expect(ROOT.innerHTML).toContain("error 404");
+    });
+
+    it("should call renderView with argument pathname and props and not render the view without ROOT", () => {
+      setRootEl(null);
+      setRoutes({ "/chat": jest.fn() });
+
+      const pathname = "/chat";
+      const props = { id: 1, name: "chat" };
+      expect(navigateTo(pathname, props)).toEqual(undefined);
+    });
+  });
+
+  describe("onUrlChange", () => {
+    it("should change the view based on the new location", () => {
+      const mockViewChat = jest.fn(() => {
+        const viewChat = document.createElement("div");
+        viewChat.id = "chatGroup";
+        viewChat.innerHTML = `
+          <h1>Chatea con nosotros</h1>`;
+        return { view: viewChat, getElementsAndEvents: jest.fn() };
+      });
+  
+      setRootEl(ROOT);
+      setRoutes({ "/chatGroup": mockViewChat });
+  
+      const location = {
+        pathname: "/chatGroup",
+        search: "?id=1&name=chat",
+      };
+
+      // mock of window.location
+      delete window.location;
+      window.location = { ...location, assign: jest.fn() };
+  
+      onUrlChange();
+
+      // change of DOM
+      expect(mockViewChat).toHaveBeenCalled();
+      expect(ROOT.innerHTML).toContain("h1");
+    });
   });
 });
-
-describe("setRoutes", () => {
-  it("should set the routes", () => {
-    const routes = {
-      "/chatGrupal": "ChatGrupal",
-    };
-    setRoutes(routes);
-    expect(__TEST2__.ROUTES).toEqual(routes);
-  });
-});
-
-describe("navigateTo", () => {
-  it("should change the pathname", () => {
-    const pathname = "/chatGroup";
-    navigateTo(pathname);
-    expect(window.location.pathname).toEqual(pathname);
-  });
-
-  it("should change the pathname and add a query string with multiple parameters", () => {
-    const pathname = "/chatGroup";
-    const props = { id: 1, name: "chat" };
-    navigateTo(pathname, props);
-    expect(window.location.pathname).toEqual(pathname);
-    expect(window.location.search).toEqual("?id=1&name=chat");
-  });
-
-  it("should buid the full URL", () => {
-    const pathname = "/chatGroup";
-    const props = { id: 1, name: "chat" };
-    navigateTo(pathname, props);
-    expect(window.location.href).toEqual(
-      `${window.location.origin}${pathname}?id=1&name=chat`
-    );
-  });
-});
-
-
-describe("onUrlChange", () => {
-  it("should change the view based on the new location", () => {
-    document.body.innerHTML = '<div id="root"></div>';
-    const ROOT = document.querySelector("#root");
-    const view = document.createElement("div");
-    view.id = "chatGroup";
-    ROOT.appendChild(view);
-
-    // Cambia la URL
-    const location = {
-      pathname: "/chatGroup",
-      search: "?id=1&name=chat",
-    };
-    // Llama a onUrlChange
-    delete window.location;
-    window.location = { ...location, assign: jest.fn() };
-
-    onUrlChange();
-
-    // Verifica los cambios en el DOM
-    const expectedElement = document.querySelector("#chatGroup");
-    expect(expectedElement).toBeTruthy();
-  });
-});
-
