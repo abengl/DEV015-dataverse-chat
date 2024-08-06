@@ -20,41 +20,58 @@ export function ChatGroup() {
   //Establecemos la estructura del main element
   // componente chat grupal
 
+  const chatGroup = document.createElement("div");
+  chatGroup.classList.add("group__container");
+  mainElement.appendChild(chatGroup);
 
+  //Cambiamos el título y el favicon
+  document.title = "ChatGroup";
+  document.querySelector("[type='image/x-icon']").href =
+    "../assets/logos/logo-color.svg";
 
+  // contenedor de logos tecnológicos
+  const logoTecnological = document.createElement("div");
+  logoTecnological.classList.add("logo__tecnological");
+  chatGroup.appendChild(logoTecnological);
+  const imageLogo = document.createElement("div");
+  imageLogo.classList.add("image__logo");
+  logoTecnological.appendChild(imageLogo);
 
+  // Selecciona solo los primeros 10 elementos del array
+  const dataLimitada = data.slice(0, 10);
 
+  dataLimitada.forEach((objeto) => {
+    const logoTech = document.createElement("img");
+    logoTech.classList.add("image__logo__tech");
+    logoTech.src = objeto.imageUrl;
+    logoTech.alt = objeto.name;
+    imageLogo.appendChild(logoTech);
+  });
 
+  // crear un contenedor de details de logo
+  const details = document.createElement("div");
+  details.classList.add("details__logo");
+  details.innerHTML = `
+      <h3>Chat grupal de TechGenius</h3>
+      <h4>¡Bienvenida al Chat Grupal de TechGenius! 🚀 Conecta y aprende 
+      con 24 tecnologías de programación en tiempo real. 🌟</h4>
+  `;
+  logoTecnological.appendChild(details);
 
+  // contenedor de chat
+  const chat = document.createElement("div");
+  chat.classList.add("chat_tecnologic");
 
+  chat.innerHTML = `
+    <div class="details__overflow">
+    </div>
+    <div class="chat__input">
+      <input type="text" placeholder="Escribe tu mensaje..."class="chat__input__field"/>
+      <button class="chat__input__button">Enviar</button>
+    </div>
+    `;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  chatGroup.appendChild(chat);
 
   // vista lateral con usuarios
 
@@ -77,7 +94,7 @@ export function ChatGroup() {
     `;
 
     ulTechnologies.appendChild(liTechnologies);
-  })
+  });
 
   //getElementsAndEvents is a function that sets up the necessary events and behaviors for the elements within the component's view
   const getElementsAndEvents = () => {};

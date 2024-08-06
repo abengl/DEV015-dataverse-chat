@@ -1,0 +1,109 @@
+@import "../components/nav.css";
+
+.not__found {
+    background-color: white;
+    min-height: 100vh;
+}
+
+.not__found__main {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto
+}
+
+
+.container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    /* height: 85%; */
+}
+
+.container__not__found {
+    margin-inline: 100px;
+    position: relative;
+    width: 100%;
+    padding-top: 50%;
+}
+
+.not-found-image {
+    position: absolute;
+}
+
+.space-otto {
+    z-index: 2;
+    top: 13.3%;
+    left: 24%;
+    width: 33%;
+    animation: space-otto 4s ease-in-out infinite;
+}
+
+.saturn-purple {
+    z-index: 1;
+    top: 18.7%;
+    left: 35.7%;
+    width: 34%;
+    animation: saturn-purple 4.5s ease-in-out infinite;
+}
+
+.planet-blue {
+    top: 34%;
+    left: 12.6%;
+    width: 11%;
+    animation: planet-blue 4s ease-in-out infinite;
+}
+
+.bone {
+    z-index: 3;
+    top: 25.2%;
+    left: 50.4%;
+    width: 10.3%;
+    animation: bone 3.6s ease-in-out infinite;
+}
+
+.moon-pink {
+    top: 0%;
+    left: 71.4%;
+    width: 15.6%;
+    animation: moon-pink 4.8s ease-in-out infinite;
+}
+
+.sat {
+    top: 50.8%;
+    left: 76.6%;
+    width: 9.9%;
+    animation: sat 4s ease-in-out infinite;
+}
+
+.planet-yellow {
+    top: 74.8%;
+    left: 66.3%;
+    width: 8.3%;
+    animation: planet-yellow 4.8s ease-in-out infinite;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.container__text{
+    font-size: var(--fs-normal);
+    align-self: center;
+}
+
+#container__back {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: var(--fs-normal);
+    background: var(--clr-gradient-basic);
+    color: white;
+    width: 120px;
+    box-shadow: var(--box-shadow-button);
+}
