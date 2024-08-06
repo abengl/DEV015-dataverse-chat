@@ -1,10 +1,9 @@
 import { getApiKey, setApiKey } from "../src/lib/apiKey.js";
 
+beforeEach(() => {
+  localStorage.clear();
+});
 describe("setApiKey", () => {
-  beforeEach(() => {
-    localStorage.clear();
-  });
-
   it("should set the API key in localStorage", () => {
     const key = "1234567890";
     setApiKey(key);
@@ -21,10 +20,6 @@ describe("setApiKey", () => {
 });
 
 describe("getApiKey", () => {
-  beforeEach(() => {
-    localStorage.clear();
-  });
-
   it("should get the API key from localStorage", () => {
     const key = "1234567890";
     localStorage.setItem("APIKEY", key);
@@ -36,3 +31,44 @@ describe("getApiKey", () => {
   });
 });
 
+describe("Tests with mocks", () => {
+  let getItemSpy, setItemSpy;
+
+  beforeEach(() => {
+    getItemSpy = jest
+      .spyOn(Storage.prototype, "getItem")
+      .mockImplementation(() => null);
+    setItemSpy = jest
+      .spyOn(Storage.prototype, "setItem")
+      .mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    getItemSpy.mockRestore();
+    setItemSpy.mockRestore();
+  });
+  describe("getApiKey", () => {
+    it("getApiKey should reach the getItem dependency with valid arguments", () => {
+      getApiKey();
+
+      // Esperamos que nuestra función llame a getItem
+      expect(getItemSpy).toHaveBeenCalled();
+
+      // Esperamos que se llame a getItem con el argumento APIKEY
+      expect(getItemSpy).toHaveBeenCalledWith("APIKEY");
+    });
+  });
+
+  describe("setApiKey", () => {
+    it("setApiKey should reach the setItem dependency with valid arguments", () => {
+      const key = "tech-genius-test-key";
+      setApiKey(key);
+
+      // Esperamos que nuestra función llame a setItem
+      expect(setItemSpy).toHaveBeenCalled();
+
+      // Esperamos que se llame a setItem con el argumento APIKEY y el valor de prueba
+      expect(setItemSpy).toHaveBeenCalledWith("APIKEY", key);
+    });
+  });
+});
