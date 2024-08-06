@@ -1,0 +1,33 @@
+footer {
+    height: 130px;
+    width: 100%;
+    padding: 20px;
+    background-color: transparent;
+    border-top: 2px solid var(--clr-neutro-dark);
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .footer__logo {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    column-gap: 10px;
+    cursor: pointer;
+  }
+  
+  .footer__logo__image {
+    height: 1rem;
+  }
+  
+  h4 {
+    color: var(--clr-primary-dark);
+  }
+  
+  .footer__text {
+    color: var(--tx-color-dark);
+    text-align: center;
+  }
