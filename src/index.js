@@ -17,7 +17,6 @@ const routes = {
 
 setRoutes(routes);
 
-
 // set the root element where the views will be rendered y render the view based on the URL load.
 window.addEventListener("DOMContentLoaded", () => {
   setRootEl(rootElement);
