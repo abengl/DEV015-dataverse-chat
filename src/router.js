@@ -37,10 +37,10 @@ const queryStringToObject = (queryString) => {
  * @param {object} props = {} - Parameters to pass to the view's render function.
  */
 const renderView = (pathname, props) => {
-  if (!ROOT) {
-    //return;
-    setRootEl(document.querySelector(".root"));
-  }
+  // if (!ROOT) {
+  //   //return;
+  //   setRootEl(document.querySelector(".root"));
+  // }
   // clear the current html
   ROOT.innerHTML = "";
 
