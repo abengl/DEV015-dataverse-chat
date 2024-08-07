@@ -117,7 +117,7 @@
   .chat__main {
     width: 100%;
     display: grid;
-    grid-template-columns: 60% auto;
+    grid-template-columns: 1fr;
   }
 
   .data__container {
