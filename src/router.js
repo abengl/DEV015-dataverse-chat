@@ -38,7 +38,8 @@ const queryStringToObject = (queryString) => {
  */
 const renderView = (pathname, props) => {
   if (!ROOT) {
-    return;
+    //return;
+    setRootEl(document.querySelector('.root'));
   }
   // clear the current html
   ROOT.innerHTML = "";
