@@ -37,15 +37,15 @@ const queryStringToObject = (queryString) => {
  * @param {object} props = {} - Parameters to pass to the view's render function.
  */
 const renderView = (pathname, props) => {
-  if (!ROOT) {
-    return;
-  }
+  // if (!ROOT) {
+  //   //return;
+  //   setRootEl(document.querySelector(".root"));
+  // }
   // clear the current html
   ROOT.innerHTML = "";
 
   // find the correct (route) to render
   const viewRender = ROUTES[pathname]; // find the route key value (value is a function)
-  //console.log("renderizar", viewRender);
 
   // call the view's render function with the prop and get the new html element
   if (viewRender) {
@@ -69,10 +69,8 @@ export const navigateTo = (pathname, props = {}) => {
     : "";
   // Build the full URL
   const url = `${window.location.origin}${pathname}${queryString}`;
-
   // Add a new state to the browser history
   window.history.pushState(props, "", url);
-
   // Render the corresponding view
   renderView(pathname, props);
 };
@@ -86,7 +84,6 @@ export const navigateTo = (pathname, props = {}) => {
 // onUrlChange function that will be called when the url changes (popstate event)
 export const onUrlChange = () => {
   const { pathname, search } = window.location;
-  //console.log("cambio de url", pathname, search);
   const props = queryStringToObject(search);
   renderView(pathname, props);
 };
